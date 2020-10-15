@@ -1,0 +1,11 @@
+footer {
+    color: #ffffff;
+    font-size: $font-size-small;
+
+    >.copyright {
+        background-color: $primary-bg-color;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+}

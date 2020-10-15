@@ -1,6 +1,7 @@
 const uuid = require('uuid/v1');
 const Camera = require('../models/Camera');
 
+//Fonction qui permet de récupérer la liste de toutes les caméras
 exports.getAllCameras = (req, res, next) => {
   Camera.find().then(
     (cameras) => {
@@ -17,6 +18,7 @@ exports.getAllCameras = (req, res, next) => {
   );
 };
 
+//Fonction qui permet de récupérer une caméra 
 exports.getOneCamera = (req, res, next) => {
   Camera.findById(req.params.id).then(
     (camera) => {

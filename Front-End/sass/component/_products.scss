@@ -1,0 +1,8 @@
+.products {
+    display: flex;
+    flex-direction: row;
+
+    @media(max-width:722px){
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,19 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    
+    &.bg-primary {
+        background-color: $primary-bg-color!important;
+    }
+    >.navbar-brand{
+        font-size: $font-size-medium;
+        margin-left: $margin-size;
+    }
+    >.navbar-cart > .fa-shopping-cart {
+        color: #ffffff;
+        font-size: $font-size-medium;
+        margin-right: $margin-size;
+    }
+}
