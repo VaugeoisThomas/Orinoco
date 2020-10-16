@@ -1,5 +1,5 @@
 html, body {
-  background-color: #007bff;
+  background: linear-gradient(to bottom, #9633FF, #D1ABF9);
 }
 
 nav {
@@ -9,7 +9,7 @@ nav {
   align-items: baseline;
 }
 nav.bg-primary {
-  background-color: #1E90FF !important;
+  background-color: #7B00FD !important;
 }
 nav > .navbar-brand {
   font-size: 2rem;
@@ -24,6 +24,7 @@ nav > .navbar-cart > .fa-shopping-cart {
 .products {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 @media (max-width: 722px) {
   .products {
@@ -32,16 +33,26 @@ nav > .navbar-cart > .fa-shopping-cart {
 }
 
 .card {
+  max-width: calc(50% - 20px);
+  margin: 10px;
   opacity: 1;
   transition: font-size 300ms ease-in-out, opacity 300ms ease-in-out;
 }
 .card:hover {
   opacity: 0.5;
 }
+.card-img {
+  height: 600px;
+}
 .card-footer {
   display: flex;
   flex-direction: row;
   justify-content: center !important;
+}
+.card.one {
+  align-items: center;
+  width: 50%;
+  margin: 10px auto;
 }
 
 footer {
@@ -49,7 +60,7 @@ footer {
   font-size: 1.5rem;
 }
 footer > .copyright {
-  background-color: #1E90FF;
+  background-color: #7B00FD;
   display: flex;
   flex-direction: row;
   justify-content: center;

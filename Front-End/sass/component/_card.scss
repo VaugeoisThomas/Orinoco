@@ -1,16 +1,24 @@
 .card {
+    max-width: calc(50% - 20px);
+    margin: 10px;
     opacity: 1;
     transition:
         font-size 300ms ease-in-out,
         opacity 300ms ease-in-out;
-
     &:hover {
         opacity: 0.5;
     }
-    
+    &-img {
+        height: 600px;
+    }
     &-footer {
         display: flex;
         flex-direction: row;
         justify-content: center!important;
+    }
+    &.one{
+        align-items: center;
+        width: 50%;
+        margin: 10px auto;
     }
 }
