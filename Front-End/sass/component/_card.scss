@@ -1,5 +1,6 @@
 .card {
     max-width: calc(50% - 20px);
+    height: 500px;
     margin: 10px;
     opacity: 1;
     transition:
@@ -9,16 +10,21 @@
         opacity: 0.5;
     }
     &-img {
-        height: 600px;
+        height: 300px;
     }
     &-footer {
         display: flex;
         flex-direction: row;
         justify-content: center!important;
+        border: none!important;
+        background-color: rgba(0,0,0,0);
     }
     &.one{
         align-items: center;
         width: 50%;
-        margin: 10px auto;
+        margin: 100px auto;
+    }
+    &.one:hover {
+        opacity: inherit;
     }
 }

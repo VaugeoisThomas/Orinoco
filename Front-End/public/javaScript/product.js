@@ -6,4 +6,5 @@ const cameraSelected = new Products
 
 cameraSelected.getProducts(urlProduct).then(result => {
     cameraSelected.displayOne(result)
+    cameraSelected.addToCart(result)
 })

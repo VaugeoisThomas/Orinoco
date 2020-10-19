@@ -21,6 +21,12 @@ nav > .navbar-cart > .fa-shopping-cart {
   margin-right: 20px;
 }
 
+.cart {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
 .products {
   display: flex;
   flex-direction: row;
@@ -34,6 +40,7 @@ nav > .navbar-cart > .fa-shopping-cart {
 
 .card {
   max-width: calc(50% - 20px);
+  height: 500px;
   margin: 10px;
   opacity: 1;
   transition: font-size 300ms ease-in-out, opacity 300ms ease-in-out;
@@ -42,17 +49,28 @@ nav > .navbar-cart > .fa-shopping-cart {
   opacity: 0.5;
 }
 .card-img {
-  height: 600px;
+  height: 300px;
 }
 .card-footer {
   display: flex;
   flex-direction: row;
   justify-content: center !important;
+  border: none !important;
+  background-color: rgba(0, 0, 0, 0);
 }
 .card.one {
   align-items: center;
   width: 50%;
-  margin: 10px auto;
+  margin: 100px auto;
+}
+.card.one:hover {
+  opacity: inherit;
+}
+
+#quantity {
+  position: absolute;
+  top: 2rem;
+  right: 1rem;
 }
 
 footer {

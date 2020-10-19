@@ -6,9 +6,9 @@ class Products {
         this.description = description
         this.imageUrl = imageUrl
     }
-
+    
     /**
-     * Récupère de manière asynchrone les données de l'api
+     * Get in asychronous way data of API
      * @param {*} url 
      */
     async getProducts(url){
@@ -22,15 +22,21 @@ class Products {
     }
     
     /**
-     * Retourne l'affichage de tous les articles 
+     * Return a display of all products
      * @param {*} result
      */
     displayAll(result) {
+        /**
+         * For each products, we take element with "product" id
+         * We converte price
+         * We display with a card element after the first element
+         */
         result.forEach(product => {
+
             const productList = document.getElementById("product")
             const ConvertedPrice = (product.price / 100)
 
-            //On affiche les éléments dans l'élement avec l'Id "products"
+            //Definition of the card component to display all products
             let renderedUserInterface = `
                 <div class="card">
                     <img class="card-img" src="${product.imageUrl}" alt="Card Image" />
@@ -39,7 +45,7 @@ class Products {
                         <h4 class="card-title">${ConvertedPrice}€</h4>
                     </div>
                     <div class="card-footer">
-                        <a href="product.html?id=${product._id}" class="btn stretched-link"><i class="fas fa-search-plus"></i></a>
+                        <a href="product.html?id=${product._id}" title="Voir plus !" class="btn stretched-link"><i class="fas fa-search-plus"></i></a>
                     </div>
                 </div>`
             productList.insertAdjacentHTML("afterbegin", renderedUserInterface)
@@ -47,12 +53,13 @@ class Products {
     }
 
     /**
-     * Retourne l'affichage d'un produit selectionné
+     * Return a display of a selected product
      * @param {*} result 
      */
     displayOne(result){
         const productSelected = document.getElementById("product")
         const convertedPrice = (result.price / 100)
+        const lensesNumber = result.lenses.length
         
         let renderedUserInterface = `
             <div class="card one">
@@ -60,12 +67,36 @@ class Products {
                 <div class="card-body">
                     <h3 class="card-title">${result.name}</h3>
                     <p class="card-text">${result.description}</p>
+                    <div id="product-selected">
+                        <select name="lenses" id="lenses-selected">
+                            <option value="">Tailles des lentilles</option>
+                        </select>
+                    </div>
                     <h4 class="card-title">${convertedPrice}€</h4>
                 </div>
                 <div class="card-footer">
-                    <button class="btn"><i class="fas fa-plus-circle"></i></button>
+                    <button class="btn stretched-link product-add-cart" title="Ajouter au panier"><i class="fas fa-plus-circle"></i></button>
                 </div>
             </div>`
-        productSelected.insertAdjacentHTML("afterbegin", renderedUserInterface)
+        productSelected.insertAdjacentHTML("beforeend", renderedUserInterface)
+        const lensesTag = document.getElementById("lenses-selected")
+        for (let i = 0; i < lensesNumber; i++){
+            lensesTag.insertAdjacentHTML('beforeend', `<option value="${result.lenses[i]}">${result.lenses[i]}</option>`)
+        }
+    }
+
+    addToCart (result){
+        console.log(result)
+        var itemSelected = document.getElementsByClassName("product-add-cart")
+        itemSelected.addEventListener("click", function(e){
+            e.preventDefault()
+            //Creation of a localStorage about product selected
+            let productSelected = {
+                productName = product.name,
+                productId = product._id,
+                productLense = select.value
+
+            }
+        })
     }
 }
