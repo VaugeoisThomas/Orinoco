@@ -62,7 +62,7 @@ class Products {
         const lensesNumber = result.lenses.length
         
         let renderedUserInterface = `
-            <div class="card one">
+            <div class="card card--selected">
                 <img class="card-img" src="${result.imageUrl}" alt="Card Image" />
                 <div class="card-body">
                     <h3 class="card-title">${result.name}</h3>
@@ -83,20 +83,5 @@ class Products {
         for (let i = 0; i < lensesNumber; i++){
             lensesTag.insertAdjacentHTML('beforeend', `<option value="${result.lenses[i]}">${result.lenses[i]}</option>`)
         }
-    }
-
-    addToCart (result){
-        console.log(result)
-        var itemSelected = document.getElementsByClassName("product-add-cart")
-        itemSelected.addEventListener("click", function(e){
-            e.preventDefault()
-            //Creation of a localStorage about product selected
-            let productSelected = {
-                productName = product.name,
-                productId = product._id,
-                productLense = select.value
-
-            }
-        })
     }
 }

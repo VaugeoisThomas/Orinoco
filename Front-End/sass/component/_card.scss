@@ -6,12 +6,10 @@
     transition:
         font-size 300ms ease-in-out,
         opacity 300ms ease-in-out;
-    &:hover {
-        opacity: 0.5;
-    }
-    &-img {
-        height: 300px;
-    }
+
+
+    &-img { height: 300px; }
+
     &-footer {
         display: flex;
         flex-direction: row;
@@ -19,12 +17,11 @@
         border: none!important;
         background-color: rgba(0,0,0,0);
     }
-    &.one{
-        align-items: center;
-        width: 50%;
-        margin: 100px auto;
-    }
-    &.one:hover {
-        opacity: inherit;
-    }
+    
+    &--selected { align-items: center; width: 50%; margin: 100px auto; }
+    &.one:hover { opacity: inherit; }
+    &:hover {opacity: 0.5;}
 }
+
+
+

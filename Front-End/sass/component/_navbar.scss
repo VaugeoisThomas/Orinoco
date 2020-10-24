@@ -11,8 +11,12 @@ nav {
         font-size: $font-size-medium;
         margin-left: $margin-size;
     }
+    >.navbar-brand > img{
+        width:100;
+        height: 100px;
+    }
     >.navbar-cart > .fa-shopping-cart {
-        color: #ffffff;
+        color: #a265ca;
         font-size: $font-size-medium;
         margin-right: $margin-size;
     }
