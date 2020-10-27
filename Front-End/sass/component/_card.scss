@@ -1,3 +1,6 @@
+/*
+    Definition of CARD's style.
+*/
 .card {
     max-width: calc(50% - 20px);
     height: 500px;
@@ -18,9 +21,17 @@
         background-color: rgba(0,0,0,0);
     }
     
-    &--selected { align-items: center; width: 50%; margin: 100px auto; }
-    &.one:hover { opacity: inherit; }
+    &:last-child{
+        margin: 10px auto;
+    }
+    &--selected {margin: 100px auto!important; opacity: inherit!important}
+
     &:hover {opacity: 0.5;}
+
+    @media(max-width:722px) {
+        margin: 10px auto;
+        max-width: inherit;
+    }
 }
 
 

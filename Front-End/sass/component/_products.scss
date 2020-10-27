@@ -1,9 +1,14 @@
+/*
+    Definition of PRODUCTS's style.
+*/
 .products {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 
+
     @media(max-width:722px){
         flex-direction: column;
+        flex-wrap: nowrap;
     }
 }

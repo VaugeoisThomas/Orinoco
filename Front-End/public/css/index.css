@@ -39,6 +39,7 @@ nav > .navbar-cart > .fa-shopping-cart {
 @media (max-width: 722px) {
   .products {
     flex-direction: column;
+    flex-wrap: nowrap;
   }
 }
 
@@ -59,16 +60,21 @@ nav > .navbar-cart > .fa-shopping-cart {
   border: none !important;
   background-color: rgba(0, 0, 0, 0);
 }
-.card--selected {
-  align-items: center;
-  width: 50%;
-  margin: 100px auto;
+.card:last-child {
+  margin: 10px auto;
 }
-.card.one:hover {
-  opacity: inherit;
+.card--selected {
+  margin: 100px auto !important;
+  opacity: inherit !important;
 }
 .card:hover {
   opacity: 0.5;
+}
+@media (max-width: 722px) {
+  .card {
+    margin: 10px auto;
+    max-width: inherit;
+  }
 }
 
 #quantity {

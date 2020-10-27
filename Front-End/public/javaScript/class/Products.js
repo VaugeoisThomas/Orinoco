@@ -84,4 +84,21 @@ class Products {
             lensesTag.insertAdjacentHTML('beforeend', `<option value="${result.lenses[i]}">${result.lenses[i]}</option>`)
         }
     }
+
+    /**
+     * Allow to add a product on a cart
+     * @param {*} result 
+     */
+    addToCart(result){
+        //Définition of a LocalStorage with a selected item
+        let selectedItem = {
+            name: result.name,
+            id: result._id,
+            quantity: 1,
+            price : result.price/100,
+            description: result.description,
+            total: result.price/100
+        };
+        const cart = document.getElementsByClassName("product-add-cart")
+    }
 }
