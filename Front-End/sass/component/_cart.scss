@@ -1,0 +1,31 @@
+/*
+    Definition of CART's style.
+*/
+.cart {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: calc(100% - 20px);
+    text-align: center;
+
+    &-title{
+        width: 100%;
+        font-size: 2rem;
+    }
+    &-wrapper{
+        display: flex;
+        flex-direction: column;
+        max-width: calc(20% - 20px);
+        margin: 10px auto;
+    }
+    &-wrapper-img {
+        height: 300px;
+        max-width: 400px;
+    }
+    &-quantity{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+    }
+}

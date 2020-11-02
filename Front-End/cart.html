@@ -19,15 +19,14 @@
 
     <main>
         <!-- Contain the entire list of product sold -->
-        <div class="container">
-            <section id="cart" class="cart">
-                <div id="cart-title">
-                    <p>Résumé de votre commande</p>
+        <div class="container-fluid">
+            <section class="products">
+                <div id="cart" class="cart">
+                    <div id="cart-title" class="cart-title">Résumé de votre commande</div>
                 </div>
-                <div class="totalPrice">
-                    <div class="total">
-                        <p class="">Total à payer</p>
-                    </div>
+                <div class="cart-total">
+                    <p>Total à payer (TVA incluse):</p>
+                    <p id="total" class="totalPrice"></p>
                 </div>
             </section>
         </div>

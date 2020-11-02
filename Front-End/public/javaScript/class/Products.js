@@ -34,7 +34,7 @@ class Products {
         result.forEach(product => {
 
             const productList = document.getElementById("product")
-            const ConvertedPrice = (product.price / 100)
+            const convertedPrice = (product.price / 100)
 
             //Definition of the card component to display all products
             let renderedUserInterface = `
@@ -42,7 +42,7 @@ class Products {
                     <img class="card-img" src="${product.imageUrl}" alt="Card Image" />
                     <div class="card-body">
                         <h3 class="card-title">${product.name}</h3>
-                        <h4 class="card-title">${ConvertedPrice}€</h4>
+                        <h4 class="card-title">${convertedPrice}€</h4>
                     </div>
                     <div class="card-footer">
                         <a href="product.html?id=${product._id}" title="Voir plus !" class="btn stretched-link"><i class="fas fa-search-plus"></i></a>
@@ -83,5 +83,42 @@ class Products {
         for (let i = 0; i < lensesNumber; i++){
             lensesTag.insertAdjacentHTML('beforeend', `<option value="${result.lenses[i]}">${result.lenses[i]}</option>`)
         }
+    }
+
+    addASelectedProductInACart(result){
+        let productSelected = {
+            name: result.name,
+            id: result._id,
+            quantity: 1,
+            price: result.price / 100,
+            img: result.imageUrl,
+            description: result.description,
+            total: result.price / 100
+        }
+        let ourCart = new Cart
+        let addButton = document.getElementById('add-button')
+        addButton.addEventListener('click', function(e){
+
+            //If our cart don't exist we initialyze him.
+            if(!ourCart.itemInCart){
+                ourCart.itemInCart = []
+            }else{
+                //Check if the product is in cart
+                let isProductInCart = ourCart.itemInCart.find(result => result.name == productSelected.name)
+
+                //If yes, we increment the quantity and, we calculate the total price
+                if(isProductInCart){
+                    isProductInCart.quantity += 1
+                    productSelected.total = productSelected.price * isProductInCart.quantity
+                    localStorage.setItem('item', JSON.stringify(ourCart.itemInCart)) // We define a localStorage about selected product
+                    ourCart.update()
+                }else{ //Else, we add a product in cart
+                    ourCart.itemInCart.push(productSelected)
+                    localStorage.setItem('item', JSON.stringify(ourCart.itemInCart))
+                    ourCart.update()
+                }
+            }
+        })
+
     }
 }

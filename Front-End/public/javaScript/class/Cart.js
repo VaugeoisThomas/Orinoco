@@ -1,99 +1,49 @@
 class Cart{
     constructor(){
-        this.cart = JSON.parse(localStorage.getItem('items'))
+        this.itemInCart = JSON.parse(localStorage.getItem('item'))
     }
-    /**
-     * Allow to add a product on the cart
-     * @param {*} result 
-     */
-    itemAddToCart(result){
-
-       //Definition of a LocalStorage with a selected item
-        let selectedItem = {
-            name: result.name,
-            id: result._id,
-            quantity: 1,
-            price : result.price/100,
-            description: result.description,
-            total: result.price/100
-        }
-
-        // Definition of an 'addbutton' to add element on LocalStorage on button click;
-        let addButton = document.getElementById("add-button")
-        addButton.addEventListener('click', function(e){
-            
-            //If the cart is empty, we initialyze him.
-            if(!this.cart) {
-                this.cart = []
-            }
-
-            let itemInCart = this.cart.find(result => result.name == selectedItem.name)
-            console.log(itemInCart)
-            
-            if(itemInCart){
-                itemInCart.quantity++
-                selectedItem.total = selectedItem.price * itemInCart.quantity
-                localStorage.setItem('items', JSON.stringify(this.cart))
-                cart.update()
-            }else{
-                cart.push(selectedItem)
-                localStorage.setItem('items', JSON.stringify(this.cart))
-                cart.update()
-            }
-        })
-    }
-    //Udpate
-    update(){ 
-        if(cart !== null){
-            let quantity = cart.reduce(function(total, product){
-                return total + product.quantity
-            }, 0)
-            let total = cart.reduce(function(total, product){
-                return total + product.productPrice
+    update(){
+        if(this.itemInCart !== null){
+            let quantity = this.itemInCart.reduce(function(total, product){
+                return total + product.quantity}, 0)
+  
+            let totalPrice = this.itemInCart.reduce(function(total, product){
+                return total + product.total
             }, 0)
             document.getElementById('quantity').innerHTML = quantity
-        } else {
+        }else{
             let quantity = 0
             document.getElementById('quantity').innerHTML = quantity
         }
     }
-    //Display
     display(){
-        if (cart === null) {
-            return
-        }
-
-        /*for (let product of cart) {
-            let cartRendered = `
-            <div class="cart-wrapper">
-                <div class="cart-wrapper-img">
-                    <img src="${product.image}" alt="item's picture">
-                </div>
-                <div class="cart-wrapper-infos">
-                    <div class="cart-wrapper-infos-name">${product.name}</div>
-                    <div class="cart-wrapper-infos-price">${product.Price}€</div>
-                    <div class="cart-wrapper-infos-counterAndModifier">
-                        <div class="cart-wrapper-infos-counterAndModifier-modify">
-                            <button class="cart-wrapper-infos-counterAndModifier-modify-removeOne" id='${product.name}Remove'>-</button>
-                            <p class="cart-wrapper-infos-counterAndModifier-modify-quantityValue" id='${product.name}Qty'>${product.quantity}</p>
-                            <button class="cart-wrapper-infos-counterAndModifier-modify-addOne" id='${product.name}Add'>+</button>
-                        </div>
-                        <div class="cart-wrapper-infos-counterAndModifier-totalPrice" id='${product.name}Total'><strong>${product.Price*product.quantity}</strong> €</div>
-                        <div class="cart-wrapper-infos-counterAndModifier-remove" id='${product.name}Delete'>
-                        </div>
-                
+        if(this.itemInCart === null) { return }
+        for(let product of this.itemInCart){
+            let resume = `
+                <div class="cart-wrapper">
+                    <img class="cart-wrapper-img"src="${product.img}" alt="product's picture">
+                    <div class="cart-wrapper-information-name">${product.name}</div>
+                    <div class="cart-wrapper-information-price">${product.price}€</div>
+                    <div class="cart-quantity">
+                        <button class="quantity-remove" id="item-remove">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <div class="quantity-value">${product.quantity}</div>
+                        <button class="quantity-add" id="item-add">
+                            <i class="fas fa-plus"></i>
+                        </button>
                     </div>
-                        
-                </div>
-            </div>`
-            
-            cartSection.insertAdjacentHTML("afterend", cartRendered);
-              
-            //ModifyQuantityProduct(product) 
-            //TotalPrice()            
-        }*/
+                    <div>
+                </div> `
+            document.getElementById('cart-title').insertAdjacentHTML("afterend", resume)
+            this.totalCard();
+        }
     }
-    //Remove
-
-    //Send
+    totalCard(){
+        if(this.itemInCart === null) { return }
+        let totalWithoutTaxes = this.itemInCart.reduce(function(total, product){
+            return total + product.total
+        }, 0)
+        document.getElementById("total").innerHTML = totalWithoutTaxes + '€'
+    }
 }
