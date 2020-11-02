@@ -25,8 +25,7 @@ class Cart{
             
             //If the cart is empty, we initialyze him.
             if(!cart) {
-                let cart = []
-                console.log(cart)
+                cart = []
             }
 
             let itemInCart = cart.find(result => result.name == selectedItem.name)
