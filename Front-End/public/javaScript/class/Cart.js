@@ -19,15 +19,12 @@ class Cart{
         }
     }
     //Display
-    /*display(){
+    display(){
         if (cart === null) {
             return
         }
-        console.log(cart)
-        let cartSection = document.getElementById("cart-title")
-        console.log(cartSection)
 
-        for (let product of cart) {
+        /*for (let product of cart) {
             let cartRendered = `
             <div class="cart-wrapper">
                 <div class="cart-wrapper-img">
@@ -55,8 +52,8 @@ class Cart{
               
             //ModifyQuantityProduct(product) 
             //TotalPrice()            
-        }
-    }*/
+        }*/
+    }
     //Remove
 
     //Send
