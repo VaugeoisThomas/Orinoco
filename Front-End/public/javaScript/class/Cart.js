@@ -6,8 +6,9 @@ class Cart{
      * Allow to add a product on the cart
      * @param {*} result 
      */
-    getItemAddedToCart(result){
-        //Definition of a LocalStorage with a selected item
+    itemAddToCart(result){
+
+       //Definition of a LocalStorage with a selected item
         let selectedItem = {
             name: result.name,
             id: result._id,
@@ -16,29 +17,27 @@ class Cart{
             description: result.description,
             total: result.price/100
         }
-    }
 
-    itemAddToCart(){
         // Definition of an 'addbutton' to add element on LocalStorage on button click;
         let addButton = document.getElementById("add-button")
         addButton.addEventListener('click', function(e){
             
             //If the cart is empty, we initialyze him.
-            if(!cart) {
-                cart = []
+            if(!this.cart) {
+                this.cart = []
             }
 
-            let itemInCart = cart.find(result => result.name == selectedItem.name)
+            let itemInCart = this.cart.find(result => result.name == selectedItem.name)
             console.log(itemInCart)
             
             if(itemInCart){
                 itemInCart.quantity++
                 selectedItem.total = selectedItem.price * itemInCart.quantity
-                localStorage.setItem('items', JSON.stringify(cart))
+                localStorage.setItem('items', JSON.stringify(this.cart))
                 cart.update()
             }else{
-                itemStored.push(selectedItem)
-                localStorage.setItem('items', JSON.stringify(cart))
+                cart.push(selectedItem)
+                localStorage.setItem('items', JSON.stringify(this.cart))
                 cart.update()
             }
         })

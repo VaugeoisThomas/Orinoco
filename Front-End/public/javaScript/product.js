@@ -14,7 +14,7 @@ const itemInCart = new Cart
  */
 cameraSelected.getProducts(urlProduct).then(result => {
     cameraSelected.displayOne(result)
-    itemInCart.getItemAddedToCart(result)
+    itemInCart.itemAddToCart(result)
 })
 
 //cart.update()
