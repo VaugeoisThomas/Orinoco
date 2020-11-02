@@ -18,9 +18,9 @@ class Cart{
         }
     }
 
-    itemAddToCart()
+    itemAddToCart(){
         // Definition of an 'addbutton' to add element on LocalStorage on button click;
-        var addButton = document.getElementById("add-button")
+        let addButton = document.getElementById("add-button")
         addButton.addEventListener('click', function(e){
             
             //If the cart is empty, we initialyze him.
