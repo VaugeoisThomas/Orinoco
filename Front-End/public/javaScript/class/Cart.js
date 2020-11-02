@@ -1,13 +1,12 @@
 class Cart{
     constructor(){
-
+        this.cart = JSON.parse(localStorage.getItem('items'))
     }
-
     /**
      * Allow to add a product on the cart
      * @param {*} result 
      */
-    addToCart(result){
+    getItemAddedToCart(result){
         //Definition of a LocalStorage with a selected item
         let selectedItem = {
             name: result.name,
@@ -17,9 +16,11 @@ class Cart{
             description: result.description,
             total: result.price/100
         }
+    }
 
+    itemAddToCart()
         // Definition of an 'addbutton' to add element on LocalStorage on button click;
-        let addButton = document.getElementById("add-button")
+        var addButton = document.getElementById("add-button")
         addButton.addEventListener('click', function(e){
             
             //If the cart is empty, we initialyze him.
@@ -44,8 +45,7 @@ class Cart{
         })
     }
     //Udpate
-    update(){
-        let cart = JSON.parse(localStorage.getItem('items'))
+    update(){ 
         if(cart !== null){
             let quantity = cart.reduce(function(total, product){
                 return total + product.quantity
