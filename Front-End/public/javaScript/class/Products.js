@@ -75,7 +75,7 @@ class Products {
                     <h4 class="card-title">${convertedPrice}€</h4>
                 </div>
                 <div class="card-footer">
-                    <button class="btn stretched-link product-add-cart" title="Ajouter au panier"><i class="fas fa-plus-circle"></i></button>
+                    <button class="btn stretched-link product-add-cart" id="add-button" title="Ajouter au panier"><i class="fas fa-plus-circle"></i></button>
                 </div>
             </div>`
         productSelected.insertAdjacentHTML("beforeend", renderedUserInterface)
@@ -90,7 +90,7 @@ class Products {
      * @param {*} result 
      */
     addToCart(result){
-        //Définition of a LocalStorage with a selected item
+        //Definition of a LocalStorage with a selected item
         let selectedItem = {
             name: result.name,
             id: result._id,
@@ -98,7 +98,29 @@ class Products {
             price : result.price/100,
             description: result.description,
             total: result.price/100
-        };
-        const cart = document.getElementsByClassName("product-add-cart")
+        }
+
+        const cart = new Cart()
+
+        // Definition of a 'addbutton' to add element on LocalStorage on button click;
+        let addButton = document.getElementById("add-button")
+        addButton.addEventListener('click', function(e){
+            let itemStored = JSON.parse(localStorage.getItem('items'))
+            if(!itemStored){
+                itemStored = []
+            }    
+            const itemInCart = itemStored.find(result => result.name == selectedItem.name)
+            
+            if(itemInCart){
+                itemInCart.quantity++
+                selectedItem.total = selectedItem.price * itemInCart.quantity
+                var item = localStorage.setItem('items', JSON.stringify(itemStored))
+                cart.update()
+            }else{
+                itemStored.push(selectedItem)
+                var item = localStorage.setItem('items', JSON.stringify(itemStored))
+                cart.update()
+            }
+        })
     }
 }

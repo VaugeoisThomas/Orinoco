@@ -6,6 +6,7 @@ let idUrlProduct = new URLSearchParams(window.location.search).get("id")
 let urlProduct = api + idUrlProduct
 
 const cameraSelected = new Products
+const cart = new Cart
 
 /**
  * We define an object Product from a result to our API then we display one the product selected.
@@ -15,3 +16,5 @@ cameraSelected.getProducts(urlProduct).then(result => {
     cameraSelected.displayOne(result)
     cameraSelected.addToCart(result)
 })
+
+cart.update()

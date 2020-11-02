@@ -1,7 +1,11 @@
+/* Configuration of the page */
 html, body {
   background: #a265ca;
 }
 
+/*
+    Definition of NAVBAR's style.
+*/
 nav {
   display: flex;
   flex-direction: row;
@@ -25,12 +29,9 @@ nav > .navbar-cart > .fa-shopping-cart {
   margin-right: 20px;
 }
 
-.cart {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-}
-
+/*
+    Definition of PRODUCTS's style.
+*/
 .products {
   display: flex;
   flex-direction: row;
@@ -43,6 +44,9 @@ nav > .navbar-cart > .fa-shopping-cart {
   }
 }
 
+/*
+    Definition of CARD's style.
+*/
 .card {
   max-width: calc(50% - 20px);
   height: 500px;
@@ -77,12 +81,18 @@ nav > .navbar-cart > .fa-shopping-cart {
   }
 }
 
+/*
+    Definition of QUANTITY's style.
+*/
 #quantity {
   position: absolute;
   top: 2rem;
   right: 1rem;
 }
 
+/*
+    Definition of FOOTER's style.
+*/
 footer {
   color: #a265ca;
   font-size: 1.5rem;
