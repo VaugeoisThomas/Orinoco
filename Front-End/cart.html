@@ -20,15 +20,68 @@
     <main>
         <!-- Contain the entire list of product sold -->
         <div class="container-fluid">
-            <section class="products">
-                <div id="cart" class="cart">
-                    <div id="cart-title" class="cart-title">Résumé de votre commande</div>
-                </div>
+            <section id="cart" class="cart">
+                <div id="cart-title" class="cart-title">Résumé de votre commande</div>
                 <div class="cart-total">
-                    <p>Total à payer (TVA incluse):</p>
+                    <p>Total à payer : </p>
                     <p id="total" class="totalPrice"></p>
                 </div>
+                <div class="cart-taxes">
+                    <p class="totalTaxes">TVA 20%</p>
+                    <p class="totalTaxesAmount"></p>
+                </div>
             </section>
+        </div>
+
+        <div class="container-fluid">
+            <div class="contactInformations">
+                <div class="informationsClients">
+                    <div class="cart-title">Fiche de contact</div>
+                    <form action="" name="informations" method="dialog">
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName">Nom</label>
+                                <input type="text" id="firstName" class="form-control" placeholder="Nom">
+                            </div>
+    
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Prénom</label>
+                                <input type="text" id="lastName" class="form-control" placeholder="Prénom">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-3 mb-3">
+                                <label for="number">Numéro de rue</label>
+                                <input type="number" class="form-control" id="number" placeholder="numéro de rue">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="address">Nom de voie</label>
+                                <input type="text" class="form-control" id="address" placeholder="adresse">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="zipCode">Code Postal</label>
+                                <input type="number" class="form-control" id="zipCode" placeholder="code postal">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="state">Ville</label>
+                                <input type="text" class="form-control" id="state" placeholder="ville">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="inlineFormInputGroup">Email</label>
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">@</div>
+                                    </div>
+                                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-alert" type="submit">Passer la commande</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </main>
 

@@ -3,29 +3,27 @@
 */
 .cart {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    max-width: calc(100% - 20px);
-    text-align: center;
+    flex-direction: column;
 
     &-title{
         width: 100%;
         font-size: 2rem;
+        text-align: center;
+        background-color: #a265ca;
     }
     &-wrapper{
-        display: flex;
-        flex-direction: column;
-        max-width: calc(20% - 20px);
-        margin: 10px auto;
-    }
-    &-wrapper-img {
-        height: 300px;
-        max-width: 400px;
-    }
-    &-quantity{
+        border: 1px solid black;
         display: flex;
         flex-direction: row;
-        width: 100%;
-        justify-content: space-between;
+        margin: 10px 0px;
+    
+        &-img {
+            height: 100px;
+            max-width: 100px;
+        }
+    }
+    &-total, &-taxes{
+        display: flex;
+        flex-direction: row;
     }
 }

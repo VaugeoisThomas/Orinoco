@@ -17,5 +17,3 @@ cameraSelected.getProducts(urlProduct).then(result => {
     cameraSelected.addASelectedProductInACart(result)
     ourCart.update()
 })
-
-//cart.update()

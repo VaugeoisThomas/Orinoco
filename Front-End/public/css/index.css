@@ -33,30 +33,27 @@ nav > .navbar-cart > .fa-shopping-cart {
 */
 .cart {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  max-width: calc(100% - 20px);
-  text-align: center;
+  flex-direction: column;
 }
 .cart-title {
   width: 100%;
   font-size: 2rem;
+  text-align: center;
+  background-color: #a265ca;
 }
 .cart-wrapper {
-  display: flex;
-  flex-direction: column;
-  max-width: calc(20% - 20px);
-  margin: 10px auto;
-}
-.cart-wrapper-img {
-  height: 300px;
-  max-width: 400px;
-}
-.cart-quantity {
+  border: 1px solid black;
   display: flex;
   flex-direction: row;
-  width: 100%;
-  justify-content: space-between;
+  margin: 10px 0px;
+}
+.cart-wrapper-img {
+  height: 100px;
+  max-width: 100px;
+}
+.cart-total, .cart-taxes {
+  display: flex;
+  flex-direction: row;
 }
 
 /*
