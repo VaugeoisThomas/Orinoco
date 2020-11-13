@@ -6,22 +6,30 @@
     flex-direction: column;
 
     &-title{
-        width: 100%;
+        width: calc(100% - 10px);
         font-size: 2rem;
         text-align: center;
         background-color: #a265ca;
     }
+
     &-wrapper{
         border: 1px solid black;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         margin: 10px 0px;
-    
+        width: calc(100% - 10px);
         &-img {
-            height: 100px;
-            max-width: 100px;
+            height: 150px;
+            max-width: 150px;
         }
     }
+    &-quantity{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    
+    }
+
     &-total, &-taxes{
         display: flex;
         flex-direction: row;

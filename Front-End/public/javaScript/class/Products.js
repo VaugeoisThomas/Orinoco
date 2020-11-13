@@ -101,22 +101,21 @@ class Products {
 
             //If our cart don't exist we initialyze him.
             if(!ourCart.itemInCart){
-                ourCart.itemInCart = []
-            }else{
-                //Check if the product is in cart
-                let isProductInCart = ourCart.itemInCart.find(result => result.name == productSelected.name)
+                console.log(ourCart.itemInCart = [])
+            }
+            //Check if the product is in cart
+            let isProductInCart = ourCart.itemInCart.find(result => result.name == productSelected.name)
 
-                //If yes, we increment the quantity and, we calculate the total price
-                if(isProductInCart){
-                    isProductInCart.quantity += 1
-                    productSelected.total = productSelected.price * isProductInCart.quantity
-                    localStorage.setItem('item', JSON.stringify(ourCart.itemInCart)) // We define a localStorage about selected product
-                    ourCart.update()
-                }else{ //Else, we add a product in cart
-                    ourCart.itemInCart.push(productSelected)
-                    localStorage.setItem('item', JSON.stringify(ourCart.itemInCart))
-                    ourCart.update()
-                }
+            //If yes, we increment the quantity and, we calculate the total price
+            if(isProductInCart){
+                isProductInCart.quantity += 1
+                productSelected.total = productSelected.price * isProductInCart.quantity
+                localStorage.setItem('item', JSON.stringify(ourCart.itemInCart)) // We define a localStorage about selected product
+                ourCart.update()
+            }else{ //Else, we add a product in cart
+                ourCart.itemInCart.push(productSelected)
+                localStorage.setItem('item', JSON.stringify(ourCart.itemInCart))
+                ourCart.update()
             }
         })
 
