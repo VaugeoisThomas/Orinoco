@@ -19,7 +19,7 @@ class Cart{
     }
 
     /**
-     * Display the list of product which are on cart
+     * Display the list of products which are on cart
      */
     display(){
         if(this.itemInCart === null) { return }
@@ -51,7 +51,7 @@ class Cart{
     }
 
     /**
-     * Calcul the total of cart
+     * Calculate the total of cart
      */
     totalCard(){
         if(this.itemInCart === null) { return }
@@ -94,12 +94,13 @@ class Cart{
             product.total = product.quantity * product.price
 
             if(product.quantity == 0){
-                let itemDeleted = ourCart.itemInCart.indexOf(product);
-                console.log(ourCart.itemInCart.slice(itemDeleted, 1))
-                localStorage.setItem('item', JSON.stringify(ourCart.itemInCart))
-                ourCart.update()
-                ourCart.totalCard()
-                document.location.reload();
+                let itemDeleted = ourCart.itemInCart.indexOf(product); //Verifying if selected product belongs to array's product
+                ourCart.itemInCart.slice(itemDeleted, 1) // Remove our line 
+                localStorage.setItem('item', JSON.stringify(ourCart.itemInCart)) //Refresh the localStorage
+                ourCart.update() // Update our cart
+                ourCart.totalCard() // Calculate again the total price of the cart  
+                window.location.reload(); //Refresh the current page
+                ourCart.diplay(); // Display the page
    
             }else{
                 quantityInCart.innerHTML = `Qty : ${product.quantity}`
@@ -107,6 +108,25 @@ class Cart{
                 localStorage.setItem('item', JSON.stringify(ourCart.itemInCart))
                 ourCart.update()
                 ourCart.totalCard()
+            }
+        })
+    }
+
+    ordering(){
+        let contactOrder = document.getElementById('submit-button').addEventListener('click', function(e){
+            e.preventDefault()
+
+            let firstName = document.getElementById('firstName').value
+            let lastName = document.getElementById('lastName').value
+            let streetNumber = document.getElementById('number').value
+            let adress = document.getElementById('adress').value
+            let zipCode = document.getElementById('zipCode').value
+            let state = document.getElementById('state').value
+
+            if(ourCart == null){
+                alert('Vous ne pouvez envoyer le formulaire : Votre panier est vide')
+            }else{
+                let contact = new contact(firstName, lastName, streetNumber, adress, zipCode, state)
             }
         })
     }
