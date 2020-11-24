@@ -97,11 +97,9 @@ class Cart{
                 let itemDeleted = ourCart.itemInCart.indexOf(product); //Verifying if selected product belongs to array's product
                 ourCart.itemInCart.slice(itemDeleted, 1) // Remove our line 
                 localStorage.setItem('item', JSON.stringify(ourCart.itemInCart)) //Refresh the localStorage
-                ourCart.update() // Update our cart
+                /*ourCart.update() // Update our cart
                 ourCart.totalCard() // Calculate again the total price of the cart  
-                window.location.reload(); //Refresh the current page
-                ourCart.diplay(); // Display the page
-   
+                window.location.reload(); //Refresh the current page  */ 
             }else{
                 quantityInCart.innerHTML = `Qty : ${product.quantity}`
                 totalItems.innerHTML = `<strong>${product.price * product.quantity}</strong> €`
@@ -122,11 +120,12 @@ class Cart{
             let adress = document.getElementById('adress').value
             let zipCode = document.getElementById('zipCode').value
             let state = document.getElementById('state').value
+            let email = document.getElementById('email').value
 
             if(ourCart == null){
                 alert('Vous ne pouvez envoyer le formulaire : Votre panier est vide')
             }else{
-                let contact = new contact(firstName, lastName, streetNumber, adress, zipCode, state)
+                let contact = new contact(firstName, lastName, streetNumber, adress, zipCode, state, email)
             }
         })
     }

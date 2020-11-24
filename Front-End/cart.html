@@ -38,46 +38,46 @@
                 <div class="cart-title">Fiche de contact</div>
                 <section class="contactInformations">
                     <div class="informationsClients">
-                        <form action="" name="informations" method="dialog">
+                        <form action="" name="informations" method="dialog" id="isValid">
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="firstName">Nom</label>
-                                    <input type="text" id="firstName" class="form-control" placeholder="Nom">
+                                    <input type="text" id="firstName" class="form-control" placeholder="Nom" required pattern="[a-zA-Z\ - \s]*">
                                 </div>
         
                                 <div class="col-md-6 mb-3">
                                     <label for="lastName">Prénom</label>
-                                    <input type="text" id="lastName" class="form-control" placeholder="Prénom">
+                                    <input type="text" id="lastName" class="form-control" placeholder="Prénom" required pattern="[a-zA-Z\ - \s]*">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="number">Numéro de rue</label>
-                                    <input type="number" class="form-control" id="number" placeholder="numéro de rue" required pattern="^\d+$">
+                                    <input type="number" class="form-control" id="number" placeholder="numéro de rue" required pattern="^\d{5}$">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="address">Nom de voie</label>
-                                    <input type="text" class="form-control" id="address" placeholder="adresse">
+                                    <input type="text" class="form-control" id="address" placeholder="adresse" required pattern="[a-zA-Z\ - \s]*">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6 mb-3">
                                     <label for="zipCode">Code Postal</label>
-                                    <input type="number" class="form-control" id="zipCode" placeholder="code postal">
+                                    <input type="number" class="form-control" id="zipCode" placeholder="code postal" required pattern="^\d{5}$">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="state">Ville</label>
-                                    <input type="text" class="form-control" id="state" placeholder="ville">
+                                    <input type="text" class="form-control" id="state" placeholder="ville" required pattern="[a-zA-Z\ - \s]*">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12 mb-3">
-                                    <label for="inlineFormInputGroup">Email</label>
+                                    <label for="email">Email</label>
                                     <div class="input-group mb-2">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text">@</div>
                                         </div>
-                                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Email">
+                                        <input type="text" class="form-control" id="email" placeholder="Email" required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
                                     </div>
                                 </div>
                             </div>
@@ -98,5 +98,6 @@
     <script src="https://kit.fontawesome.com/c1a8b5239f.js" crossorigin="anonymous"></script>
     <script defer src="public/javaScript/class/Cart.js"></script>
     <script defer src="public/javaScript/cart.js"></script>
+    <script defer src="public/javaScript/class/Contact.js"></script>
 </body>
 </html>

@@ -1,10 +1,11 @@
 class Products {
-    constructor(_id, name, price, description, imageUrl){
+    constructor(_id, name, price, description, imageUrl, lenses){
         this.id = _id
         this.name = name
         this.price = price
         this.description = description
         this.imageUrl = imageUrl
+        this.lenses = lenses
     }
     
     /**
@@ -90,6 +91,7 @@ class Products {
             name: result.name,
             id: result._id,
             quantity: 1,
+            lense: result.lenses,
             price: result.price / 100,
             img: result.imageUrl,
             description: result.description,

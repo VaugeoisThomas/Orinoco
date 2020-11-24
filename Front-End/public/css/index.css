@@ -89,6 +89,7 @@ nav > .navbar-cart > .fa-shopping-cart {
 }
 .card-img {
   height: 300px;
+  object-fit: contain;
 }
 .card-footer {
   display: flex;

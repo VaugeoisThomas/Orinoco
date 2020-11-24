@@ -11,7 +11,10 @@
         opacity 300ms ease-in-out;
 
 
-    &-img { height: 300px; }
+    &-img { 
+        height: 300px;
+        object-fit: contain;
+    }
 
     &-footer {
         display: flex;
