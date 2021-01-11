@@ -18,17 +18,24 @@
         flex-direction: column;
         margin: 10px 0px;
         width: calc(100% - 10px);
+
+        &-description, &-name, &-price{
+            padding: 2%;
+        }
         &-img {
-            height: 150px;
-            max-width: 150px;
+            height: 300px;
+            object-fit: contain;
         }
     }
     &-quantity{
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-    
+        justify-content: space-around;
+        &-total{
+            padding: 2%;
+        }
     }
+
 
     &-total, &-taxes{
         display: flex;

@@ -1,15 +1,16 @@
 /**
- * Definition of consts for our API
- */
-const cameraApi = "http://localhost:3000/api/cameras/"
-const cameraProducts = new Products
-let ourCart = new Cart
+* Definition of consts for our API
+*/
+const Api = "http://localhost:3000/api/cameras/"
 
 /**
  * We define an object Product from a result to our API then we display all products found.
  */
-cameraProducts.getProducts(cameraApi).then(result => {
-    cameraProducts.displayAll(result)
-    ourCart.update()
+const Camera = new Products
+const MyCart = new Cart
 
+Camera.getProducts(Api).then(result => {
+    Camera.displayAll(result)
+    MyCart.update()
 })
+    

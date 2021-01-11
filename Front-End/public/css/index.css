@@ -16,15 +16,20 @@ nav.bg-primary {
   background-color: #f3e9f1 !important;
 }
 nav > .navbar-brand {
-  font-size: 2rem;
+  font-size: 2.1rem;
   margin-left: 20px;
 }
 nav > .navbar-brand > img {
   height: 100px;
 }
+nav > .navbar-cart {
+  width: 50px;
+  margin-right: 20px;
+  border: 1px solid black;
+}
 nav > .navbar-cart > .fa-shopping-cart {
   color: #a265ca;
-  font-size: 2rem;
+  font-size: 2.1rem;
   margin-right: 20px;
 }
 
@@ -48,14 +53,20 @@ nav > .navbar-cart > .fa-shopping-cart {
   margin: 10px 0px;
   width: calc(100% - 10px);
 }
+.cart-wrapper-description, .cart-wrapper-name, .cart-wrapper-price {
+  padding: 2%;
+}
 .cart-wrapper-img {
-  height: 150px;
-  max-width: 150px;
+  height: 300px;
+  object-fit: contain;
 }
 .cart-quantity {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+.cart-quantity-total {
+  padding: 2%;
 }
 .cart-total, .cart-taxes {
   display: flex;
@@ -82,14 +93,14 @@ nav > .navbar-cart > .fa-shopping-cart {
 */
 .card {
   max-width: calc(50% - 20px);
-  height: 500px;
+  height: auto;
   margin: 10px;
   opacity: 1;
   transition: font-size 300ms ease-in-out, opacity 300ms ease-in-out;
 }
 .card-img {
   height: 300px;
-  object-fit: contain;
+  object-fit: fill;
 }
 .card-footer {
   display: flex;
@@ -98,12 +109,12 @@ nav > .navbar-cart > .fa-shopping-cart {
   border: none !important;
   background-color: rgba(0, 0, 0, 0);
 }
-.card:last-child {
-  margin: 10px auto;
-}
 .card--selected {
   margin: 100px auto !important;
   opacity: inherit !important;
+}
+.card:last-child {
+  margin: 10px auto;
 }
 .card:hover {
   opacity: 0.5;
@@ -123,7 +134,7 @@ nav > .navbar-cart > .fa-shopping-cart {
   height: 40px;
   position: absolute;
   top: 2.1rem;
-  right: 0.9rem;
+  right: 1.5rem;
   text-align: center;
   color: #f3e9f1;
 }

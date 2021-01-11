@@ -1,13 +1,4 @@
 class Products {
-    constructor(_id, name, price, description, imageUrl, lenses){
-        this.id = _id
-        this.name = name
-        this.price = price
-        this.description = description
-        this.imageUrl = imageUrl
-        this.lenses = lenses
-    }
-    
     /**
      * Get in asychronous way data of API
      * @param {*} url 
@@ -34,8 +25,7 @@ class Products {
          */
         result.forEach(product => {
 
-            const productList = document.getElementById("product")
-            const convertedPrice = (product.price / 100)
+            const products = document.querySelector("section")
 
             //Definition of the card component to display all products
             let renderedUserInterface = `
@@ -43,13 +33,13 @@ class Products {
                     <img class="card-img" src="${product.imageUrl}" alt="Card Image" />
                     <div class="card-body">
                         <h3 class="card-title">${product.name}</h3>
-                        <h4 class="card-title">${convertedPrice}€</h4>
+                        <h4 class="card-title">${product.price / 100}€</h4>
                     </div>
                     <div class="card-footer">
                         <a href="product.html?id=${product._id}" title="Voir plus !" class="btn stretched-link"><i class="fas fa-search-plus"></i></a>
                     </div>
                 </div>`
-            productList.insertAdjacentHTML("afterbegin", renderedUserInterface)
+            products.insertAdjacentHTML("afterbegin", renderedUserInterface)
         })
     }
 
@@ -58,8 +48,7 @@ class Products {
      * @param {*} result 
      */
     displayOne(result){
-        const productSelected = document.getElementById("product")
-        const convertedPrice = (result.price / 100)
+        const productSelected = document.querySelector("section")
         const lensesNumber = result.lenses.length
         
         let renderedUserInterface = `
@@ -73,10 +62,10 @@ class Products {
                             <option value="">Tailles des lentilles</option>
                         </select>
                     </div>
-                    <h4 class="card-title">${convertedPrice}€</h4>
+                    <h4 class="card-title">${result.price / 100}€</h4>
                 </div>
                 <div class="card-footer">
-                    <button class="btn stretched-link" id="add-button" title="Ajouter au panier"><i class="fas fa-plus-circle"></i></button>
+                    <a href="" title="Ajouter au panier" class="btn stretched-link" id="add-button"><i class="fas fa-plus-circle"></i></a>
                 </div>
             </div>`
         productSelected.insertAdjacentHTML("beforeend", renderedUserInterface)

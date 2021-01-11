@@ -1,19 +1,17 @@
 /**
  * Definition of consts for our API
  */
-var api = "http://localhost:3000/api/cameras/"
+const cameraApi = "http://localhost:3000/api/cameras/"
 let idUrlProduct = new URLSearchParams(window.location.search).get("id")
-let urlProduct = api + idUrlProduct
+let urlProduct = cameraApi + idUrlProduct
 
-const cameraSelected = new Products
-let ourCart = new Cart
+const cameraProducts = new Products
 
 /**
  * We define an object Product from a result to our API then we display one the product selected.
  * Then, we allow to push on the Cart
  */
-cameraSelected.getProducts(urlProduct).then(result => {
-    cameraSelected.displayOne(result)
-    cameraSelected.addASelectedProductInACart(result)
-    ourCart.update()
+cameraProducts.getProducts(urlProduct).then(result => {
+    cameraProducts.displayOne(result)
+    cameraProducts.addASelectedProductInACart(result)
 })

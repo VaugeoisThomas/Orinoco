@@ -3,17 +3,16 @@
 */
 .card {
     max-width: calc(50% - 20px);
-    height: 500px;
+    height: auto;
     margin: 10px;
     opacity: 1;
     transition:
         font-size 300ms ease-in-out,
         opacity 300ms ease-in-out;
 
-
     &-img { 
         height: 300px;
-        object-fit: contain;
+        object-fit: fill;
     }
 
     &-footer {
@@ -24,10 +23,14 @@
         background-color: rgba(0,0,0,0);
     }
     
+    &--selected {
+        margin: 100px auto!important; 
+        opacity: inherit!important;
+    }
+
     &:last-child{
         margin: 10px auto;
     }
-    &--selected {margin: 100px auto!important; opacity: inherit!important}
 
     &:hover {opacity: 0.5;}
 

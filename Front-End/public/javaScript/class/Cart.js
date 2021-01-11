@@ -27,9 +27,9 @@ class Cart{
             let resume = `
                 <div class="cart-wrapper">
                     <img class="cart-wrapper-img"src="${product.img}" alt="product's picture">
-                    <div class="cart-wrapper-information-name">${product.name}</div>
-                    <div class="cart-wrapper-information-price">${product.price}€</div>
-                    <div class="cart-wrapper-information-description">${product.description}</div>
+                    <h4 class="cart-wrapper-name">${product.name}</h4>
+                    <h5 class="cart-wrapper-price">${product.price}€</h5>
+                    <i class="cart-wrapper-description">${product.description}</i>
                     <div class="cart-quantity">
                         <button class="quantity-remove" id="${product.name}-remove">
                             <i class="fas fa-minus"></i>
@@ -40,7 +40,7 @@ class Cart{
                         </button>
                     </div>
                     <div class="cart-quantity-total" id="${product.name}-total"><strong>${product.price * product.quantity}</strong> €</div>
-                    <div class="cart-wrapper-information-remove" id='${product.name}-delete'>
+                    <div class="cart-wrapper-remove" id='${product.name}-delete'>
                 </div> `
             document.getElementById('cart-title').insertAdjacentHTML("afterend", resume)
             this.addItem(product)
@@ -58,7 +58,7 @@ class Cart{
         let totalWithoutTaxes = this.itemInCart.reduce(function(total, product){
             return total + product.total
         }, 0)
-        document.getElementById("total").innerHTML = totalWithoutTaxes + '€'
+        document.getElementById("total").innerHTML = totalWithoutTaxes+' €'
     }
 
     /**
