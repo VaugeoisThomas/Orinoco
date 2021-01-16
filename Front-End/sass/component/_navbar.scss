@@ -20,10 +20,9 @@ nav {
     >.navbar-cart{
         width: 50px;
         margin-right: 20px;
-        border: 1px solid black;
     }
     >.navbar-cart > .fa-shopping-cart {
-        color: #a265ca;
+        color: $danger-bg-color;
         font-size: $font-size-medium;
         margin-right: $margin-size;
     }

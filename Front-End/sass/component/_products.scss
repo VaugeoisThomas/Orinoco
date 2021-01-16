@@ -6,7 +6,10 @@
     flex-direction: row;
     flex-wrap: wrap;
 
-
+    &--selected{
+        flex-direction: column;
+        align-items: center;
+    }
     @media(max-width:722px){
         flex-direction: column;
         flex-wrap: nowrap;

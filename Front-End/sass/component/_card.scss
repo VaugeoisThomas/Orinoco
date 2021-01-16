@@ -6,6 +6,7 @@
     height: auto;
     margin: 10px;
     opacity: 1;
+    border: 1px solid $danger-bg-color;
     transition:
         font-size 300ms ease-in-out,
         opacity 300ms ease-in-out;

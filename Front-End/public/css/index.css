@@ -3,6 +3,11 @@ html, body {
   background: #f3e9f1;
 }
 
+.btn {
+  background-color: #d9832e !important;
+  border: none;
+}
+
 /*
     Definition of NAVBAR's style.
 */
@@ -25,10 +30,9 @@ nav > .navbar-brand > img {
 nav > .navbar-cart {
   width: 50px;
   margin-right: 20px;
-  border: 1px solid black;
 }
 nav > .navbar-cart > .fa-shopping-cart {
-  color: #a265ca;
+  color: #d9832e;
   font-size: 2.1rem;
   margin-right: 20px;
 }
@@ -81,6 +85,10 @@ nav > .navbar-cart > .fa-shopping-cart {
   flex-direction: row;
   flex-wrap: wrap;
 }
+.products--selected {
+  flex-direction: column;
+  align-items: center;
+}
 @media (max-width: 722px) {
   .products {
     flex-direction: column;
@@ -96,6 +104,7 @@ nav > .navbar-cart > .fa-shopping-cart {
   height: auto;
   margin: 10px;
   opacity: 1;
+  border: 1px solid #d9832e;
   transition: font-size 300ms ease-in-out, opacity 300ms ease-in-out;
 }
 .card-img {
@@ -136,7 +145,15 @@ nav > .navbar-cart > .fa-shopping-cart {
   top: 2.1rem;
   right: 1.5rem;
   text-align: center;
-  color: #f3e9f1;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container > .presentation > .presentation-title {
+  text-align: center;
 }
 
 .resume {
@@ -148,7 +165,6 @@ nav > .navbar-cart > .fa-shopping-cart {
     Definition of FOOTER's style.
 */
 footer {
-  color: #a265ca;
   font-size: 1.5rem;
 }
 footer > .copyright {

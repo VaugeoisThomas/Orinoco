@@ -3,6 +3,7 @@
 @import 'abstract/default';
 
 // COMPONENTS
+@import 'component/btn';
 @import 'component/navbar';
 @import 'component/cart';
 @import 'component/products';
@@ -10,6 +11,7 @@
 @import 'component/quantity';
 
 // LAYOUT
+@import 'layout/container';
 @import 'layout/resume';
 @import 'layout/footer';
 
