@@ -48,7 +48,7 @@ nav > .navbar-cart > .fa-shopping-cart {
   width: calc(100% - 10px);
   font-size: 2rem;
   text-align: center;
-  background-color: #a265ca;
+  background-color: #d9832e;
 }
 .cart-wrapper {
   border: 1px solid black;
@@ -168,7 +168,7 @@ footer {
   font-size: 1.5rem;
 }
 footer > .copyright {
-  background-color: #f3e9f1;
+  background-color: #d9832e;
   display: flex;
   flex-direction: row;
   justify-content: center;
