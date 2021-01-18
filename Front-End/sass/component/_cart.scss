@@ -4,6 +4,8 @@
 .cart {
     display: flex;
     flex-direction: column;
+    width:100%;
+    margin-bottom: 2%;
 
     &-title{
         width: calc(100% - 10px);
@@ -16,15 +18,15 @@
         border: 1px solid black;
         display: flex;
         flex-direction: column;
-        margin: 10px 0px;
-        width: calc(100% - 10px);
+        margin: 10px 5px;
+        width: calc(25% - 10px);
 
         &-description, &-name, &-price{
             padding: 2%;
         }
         &-img {
             height: 300px;
-            object-fit: contain;
+            object-fit: fill;
         }
     }
     &-quantity{

@@ -8,6 +8,21 @@ html, body {
   border: none;
 }
 
+.resume {
+  display: flex;
+  flex-direction: column;
+}
+.resume-product {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.resume-order {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 /*
     Definition of NAVBAR's style.
 */
@@ -43,6 +58,8 @@ nav > .navbar-cart > .fa-shopping-cart {
 .cart {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  margin-bottom: 2%;
 }
 .cart-title {
   width: calc(100% - 10px);
@@ -54,15 +71,15 @@ nav > .navbar-cart > .fa-shopping-cart {
   border: 1px solid black;
   display: flex;
   flex-direction: column;
-  margin: 10px 0px;
-  width: calc(100% - 10px);
+  margin: 10px 5px;
+  width: calc(25% - 10px);
 }
 .cart-wrapper-description, .cart-wrapper-name, .cart-wrapper-price {
   padding: 2%;
 }
 .cart-wrapper-img {
   height: 300px;
-  object-fit: contain;
+  object-fit: fill;
 }
 .cart-quantity {
   display: flex;
@@ -154,11 +171,6 @@ nav > .navbar-cart > .fa-shopping-cart {
 }
 .container > .presentation > .presentation-title {
   text-align: center;
-}
-
-.resume {
-  display: flex;
-  flex-direction: row-reverse;
 }
 
 /*

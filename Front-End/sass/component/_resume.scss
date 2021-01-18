@@ -1,0 +1,15 @@
+.resume{
+    display: flex;
+    flex-direction: column;
+
+    &-product {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    &-order {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}
