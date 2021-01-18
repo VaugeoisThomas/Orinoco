@@ -47,7 +47,6 @@ class Cart{
             this.removeQuantity(product)
             this.totalCard()
         }
-        console.log(this.itemInCart)
     }
 
     /**
@@ -72,11 +71,9 @@ class Cart{
             let totalItems = document.getElementById(`${product.name}-total`)
             product.quantity++
             product.total = product.quantity * product.price
-
             quantityInCart.innerHTML = `Qty : ${product.quantity}`
             totalItems.innerHTML = `<strong>${product.price * product.quantity}</strong> €`
             localStorage.setItem('item', JSON.stringify(this.itemInCart))
-            this.update()
             this.totalCard()
         })
     }
@@ -95,18 +92,15 @@ class Cart{
 
             if(product.quantity == 0){
                 let itemDeleted = this.itemInCart.indexOf(product); //Verifying if selected product belongs to array's product
-                this.itemInCart.slice(itemDeleted, 1) // Remove our line 
-                localStorage.setItem('item', JSON.stringify(this.itemInCart)) //Refresh the localStorage
-                this.update() // Update our cart
-                this.totalCard() // Calculate again the total price of the cart  
-                window.location.reload(); //Refresh the current page 
+                this.itemInCart.splice(itemDeleted, 1) // Remove our line 
+                localStorage.setItem('item', JSON.stringify(itemInCart)) //Refresh the localStorage
+                //window.location.reload(); //Refresh the current page 
             }else{
                 quantityInCart.innerHTML = `Qty : ${product.quantity}`
                 totalItems.innerHTML = `<strong>${product.price * product.quantity}</strong> €`
                 localStorage.setItem('item', JSON.stringify(this.itemInCart))
-                this.update()
-                this.totalCard()
             }
+            this.totalCard() // Calculate again the total price of the cart
         })
     }
 }
