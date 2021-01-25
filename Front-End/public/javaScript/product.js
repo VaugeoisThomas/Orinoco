@@ -6,6 +6,7 @@ let idUrlProduct = new URLSearchParams(window.location.search).get("id")
 let urlProduct = Api + idUrlProduct
 
 const CameraProducts = new Products
+const MyCart = new Cart
 
 
 /**
@@ -14,5 +15,6 @@ const CameraProducts = new Products
  */
 CameraProducts.getProducts(urlProduct).then(result => {
     CameraProducts.displayOne(result)
-    CameraProducts.addASelectedProductInACart(result)
+    MyCart.addProduct(result)
+    MyCart.update()
 })

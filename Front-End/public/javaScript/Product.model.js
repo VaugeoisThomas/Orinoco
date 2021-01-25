@@ -13,6 +13,7 @@ class Products {
         }
     }
     
+
     /**
      * Return a display of all products
      * @param {*} result
@@ -71,46 +72,10 @@ class Products {
                 </div>
             </div>`
         productSelected.insertAdjacentHTML("beforeend", renderedUserInterface)
-        const lensesTag = document.getElementById("lenses-selected")
+        const lensesTag = document.getElementById('lenses-selected')
+
         for (let i = 0; i < lensesNumber; i++){
             lensesTag.insertAdjacentHTML('beforeend', `<option value="${result.lenses[i]}">${result.lenses[i]}</option>`)
         }
-    }
-
-    addASelectedProductInACart(result){
-        let productSelected = {
-            name: result.name,
-            id: result._id,
-            quantity: 1,
-            lense: result.lenses,
-            price: result.price / 100,
-            img: result.imageUrl,
-            description: result.description,
-            total: result.price / 100
-        }
-        let ourCart = new Cart
-        let addButton = document.getElementById('add-button')
-        addButton.addEventListener('click', function(e){
-
-            //If our cart don't exist we initialyze him.
-            if(!ourCart.itemInCart){
-                console.log(ourCart.itemInCart = [])
-            }
-            //Check if the product is in cart
-            let isProductInCart = ourCart.itemInCart.find(result => result.name == productSelected.name)
-
-            //If yes, we increment the quantity and, we calculate the total price
-            if(isProductInCart){
-                isProductInCart.quantity += 1
-                productSelected.total = productSelected.price * isProductInCart.quantity
-                localStorage.setItem('item', JSON.stringify(ourCart.itemInCart)) // We define a localStorage about selected product
-                ourCart.update()
-            }else{ //Else, we add a product in cart
-                ourCart.itemInCart.push(productSelected)
-                localStorage.setItem('item', JSON.stringify(ourCart.itemInCart))
-                ourCart.update()
-            }
-        })
-
     }
 }

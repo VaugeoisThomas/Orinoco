@@ -1,14 +1,70 @@
 class Cart{
     constructor(){
-        this.itemInCart = JSON.parse(localStorage.getItem('item'))
+        this.content = JSON.parse(localStorage.getItem('item'))
+    }
+    /**
+     * Initialyze the cart
+     */
+    initialyzeCart(){
+        //If our cart don't exist we initialyze him.
+        if(!this.content){
+            console.log(this.content = [])
+        }
     }
 
+    save(){
+        localStorage.setItem("item", JSON.stringify(this.content))
+    }
+
+    /**
+     * Create an object for the LocalStorage
+     * @param {*} result 
+     */
+    createLocalStorage(result){
+        let productSelected = {
+            name: result.name,
+            id: result._id,
+            quantity: 1,
+            lense: result.lenses,
+            price: result.price / 100,
+            img: result.imageUrl,
+            description: result.description,
+            total: result.price / 100
+        }
+        return productSelected
+    }
+
+    addProduct(result){
+
+        let ls = this.createLocalStorage(result)
+        this.initialyzeCart()
+
+        let button = document.getElementById('add-button')
+        button.addEventListener('click', () => {
+
+            //Check if the product is in cart
+            let isProductInCart = this.content.find(result => result.name == ls.name)
+
+            //If yes, we increment the quantity and, we calculate the total price
+            if(isProductInCart){
+                isProductInCart.quantity += 1
+                ls.total = ls.price * isProductInCart.quantity
+                this.save() // We define a localStorage about selected product
+                this.update()
+            }else{ //Else, we add a product in cart
+                this.content.push(ls)
+                this.save()
+                this.update()
+            }
+        })
+
+    }
     /**
      * Allow to update cart when we get one or more product in it
      */
     update(){
-        if(this.itemInCart !== null){
-            let quantity = this.itemInCart.reduce(function(total, product){
+        if(this.content !== null){
+            let quantity = this.content.reduce(function(total, product){
                 return total + product.quantity}, 0)
 
             document.getElementById('quantity').innerHTML = quantity
@@ -22,8 +78,8 @@ class Cart{
      * Display the list of products which are on cart
      */
     display(){
-        if(this.itemInCart === null) { return }
-        for(let product of this.itemInCart){
+        if(this.content === null) { return }
+        for(let product of this.content){
             let resume = `
                 <div class="cart-wrapper">
                     <img class="cart-wrapper-img"src="${product.img}" alt="product's picture">
@@ -53,8 +109,8 @@ class Cart{
      * Calculate the total of cart
      */
     totalCard(){
-        if(this.itemInCart === null) { return }
-        let totalWithoutTaxes = this.itemInCart.reduce(function(total, product){
+        if(this.content === null) { return }
+        let totalWithoutTaxes = this.content.reduce(function(total, product){
             return total + product.total
         }, 0)
         document.getElementById("total").innerHTML = totalWithoutTaxes+' €'
@@ -64,16 +120,17 @@ class Cart{
      * Allow to add a product in a cart
      * @param {*} product 
      */
+
     addQuantity(product){
         let addButton = document.getElementById(`${product.name}-add`)
-        addButton.addEventListener('click', function (){
+        addButton.addEventListener('click', () => { 
             let quantityInCart = document.getElementById(`${product.name}-quantity`)
             let totalItems = document.getElementById(`${product.name}-total`)
             product.quantity++
             product.total = product.quantity * product.price
             quantityInCart.innerHTML = `Qty : ${product.quantity}`
             totalItems.innerHTML = `<strong>${product.price * product.quantity}</strong> €`
-            localStorage.setItem('item', JSON.stringify(this.itemInCart))
+            this.save()
             this.totalCard()
         })
     }
@@ -84,21 +141,21 @@ class Cart{
      */
     removeQuantity(product){
         let removeButton = document.getElementById(`${product.name}-remove`)
-        removeButton.addEventListener('click', function (){
+        removeButton.addEventListener('click',  () => {
             let quantityInCart = document.getElementById(`${product.name}-quantity`)
             let totalItems = document.getElementById(`${product.name}-total`)
             product.quantity--
             product.total = product.quantity * product.price
 
             if(product.quantity == 0){
-                let itemDeleted = this.itemInCart.indexOf(product); //Verifying if selected product belongs to array's product
-                this.itemInCart.splice(itemDeleted, 1) // Remove our line 
-                localStorage.setItem('item', JSON.stringify(itemInCart)) //Refresh the localStorage
-                //window.location.reload(); //Refresh the current page 
+                let itemDeleted = this.content.indexOf(product); //Verifying if selected product belongs to array's product
+                this.content.splice(itemDeleted, 1) // Remove our line 
+                this.save() //Refresh the localStorage
+                window.location.reload(); //Refresh the current page 
             }else{
                 quantityInCart.innerHTML = `Qty : ${product.quantity}`
                 totalItems.innerHTML = `<strong>${product.price * product.quantity}</strong> €`
-                localStorage.setItem('item', JSON.stringify(this.itemInCart))
+                this.save()
             }
             this.totalCard() // Calculate again the total price of the cart
         })

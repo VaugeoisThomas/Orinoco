@@ -45,6 +45,7 @@ nav > .navbar-brand > img {
 nav > .navbar-cart {
   width: 50px;
   margin-right: 20px;
+  cursor: pointer;
 }
 nav > .navbar-cart > .fa-shopping-cart {
   color: #d9832e;
@@ -125,7 +126,8 @@ nav > .navbar-cart > .fa-shopping-cart {
   transition: font-size 300ms ease-in-out, opacity 300ms ease-in-out;
 }
 .card-img {
-  height: 300px;
+  height: auto;
+  width: 100%;
   object-fit: fill;
 }
 .card-footer {
@@ -162,6 +164,7 @@ nav > .navbar-cart > .fa-shopping-cart {
   top: 2.1rem;
   right: 1.5rem;
   text-align: center;
+  cursor: pointer;
 }
 
 .container {

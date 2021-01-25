@@ -1,6 +1,6 @@
-var ourCart =  new Cart
-if(!ourCart.itemInCart | ourCart.itemInCart == 0){
+var cart =  new Cart
+if(!cart.content | cart.content == 0){
     document.getElementById('cart').innerHTML = "Votre panier est vide"
 }
-ourCart.display()
-ourCart.totalCard()
+cart.display()
+cart.totalCard()

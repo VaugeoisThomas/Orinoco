@@ -12,7 +12,8 @@
         opacity 300ms ease-in-out;
 
     &-img { 
-        height: 300px;
+        height: auto;
+        width: 100%;
         object-fit: fill;
     }
 
