@@ -15,6 +15,6 @@ const MyCart = new Cart
  */
 CameraProducts.getProducts(urlProduct).then(result => {
     CameraProducts.displayOne(result)
-    MyCart.addProduct(result)
-    MyCart.update()
+    MyCart.addProducts(result)
 })
+    

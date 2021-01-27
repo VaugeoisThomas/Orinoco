@@ -8,7 +8,7 @@
     margin-bottom: 2%;
 
     &-title{
-        width: calc(100% - 10px);
+        min-width: calc(100% - 10px);
         font-size: 2rem;
         text-align: center;
         background-color: $danger-bg-color;
@@ -19,14 +19,16 @@
         display: flex;
         flex-direction: column;
         margin: 10px 5px;
-        width: calc(25% - 10px);
 
         &-description, &-name, &-price{
             padding: 2%;
         }
         &-img {
             height: 300px;
-            object-fit: fill;
+            object-fit: contain;
+        }
+        &-name {
+            text-align: center;
         }
     }
     &-quantity{

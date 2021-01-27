@@ -16,6 +16,7 @@ html, body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .resume-order {
   display: flex;
@@ -63,7 +64,7 @@ nav > .navbar-cart > .fa-shopping-cart {
   margin-bottom: 2%;
 }
 .cart-title {
-  width: calc(100% - 10px);
+  min-width: calc(100% - 10px);
   font-size: 2rem;
   text-align: center;
   background-color: #d9832e;
@@ -73,14 +74,16 @@ nav > .navbar-cart > .fa-shopping-cart {
   display: flex;
   flex-direction: column;
   margin: 10px 5px;
-  width: calc(25% - 10px);
 }
 .cart-wrapper-description, .cart-wrapper-name, .cart-wrapper-price {
   padding: 2%;
 }
 .cart-wrapper-img {
   height: 300px;
-  object-fit: fill;
+  object-fit: contain;
+}
+.cart-wrapper-name {
+  text-align: center;
 }
 .cart-quantity {
   display: flex;
