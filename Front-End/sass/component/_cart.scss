@@ -30,6 +30,10 @@
         &-name {
             text-align: center;
         }
+
+        @media (max-width: 425px) {
+            width: 100%;
+        }
     }
     &-quantity{
         display: flex;

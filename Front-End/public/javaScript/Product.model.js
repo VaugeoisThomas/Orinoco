@@ -55,26 +55,26 @@ class Products {
         const lensesNumber = result.lenses.length
         
         let renderedUserInterface = `
-            <h1>Voici le descriptif du "${result.name}"</h1>
+            <h1>Voici le descriptif du "<span class="card-name">${result.name}</span>"</h1>
             <div class="card card--selected">
                 <img class="card-img" src="${result.imageUrl}" alt="Card Image" />
                 <div class="card-body">
                     <i class="card-text">${result.description}</i>
                     <div id="product-selected">
-                        <select name="lenses" id="lenses-selected">
-                            <option value="">Tailles des lentilles</option>
-                        </select>
+                        <h4>Selectionnez vos lentilles</h4>
+                        <select name="lenses" class="lenses-selected"></select>
                     </div>
-                    <h4 class="card-title">${result.price / 100}€</h4>
+                    <h4 class="card-title"><span class="card-price">${result.price / 100}</span>€</h4>
                 </div>
                 <div class="card-footer">
                     <button title="Ajouter au panier" class="btn stretched-link" id="add-button">Ajouter au panier</button>
                 </div>
             </div>`
         productSelected.insertAdjacentHTML("beforeend", renderedUserInterface)
-        const lensesTag = document.getElementById('lenses-selected')
-
+        
+        let lensesTag = document.querySelector('.lenses-selected')
         for (let i = 0; i < lensesNumber; i++){
+            
             lensesTag.insertAdjacentHTML('beforeend', `<option value="${result.lenses[i]}">${result.lenses[i]}</option>`)
         }
     }

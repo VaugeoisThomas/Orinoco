@@ -12,6 +12,7 @@ function display(){
                 <h4 class="cart-wrapper-name">${product.name}</h4>
                 <h5 class="cart-wrapper-price">${product.price}€</h5>
                 <i class="cart-wrapper-description">${product.description}</i>
+                <p class="cart-wrapper-lense">Votre taille de lentille : ${product.lense}</p>
                 <div class="cart-quantity">
                     <button class="quantity-remove" id="${product.name}-remove">
                         <i class="fas fa-minus"></i>
@@ -30,22 +31,8 @@ function display(){
         cart.totalCard()
     }
 }
-
-/**
- * Allow to update cart when we get one or more product in it
- */
-function update(){
-    let quantity 
-    
-    if(cart.content !== null){
-        quantity = cart.content.reduce(function(total, product){return total + product.quantity}, 0)
-    }else{
-        quantity = 0
-    }
-    document.getElementById('quantity').innerHTML = quantity
-}
+display()
 
 if(!cart.content | cart.content == 0){
     document.getElementById('cart').innerHTML = "Votre panier est vide"
 }
-display()

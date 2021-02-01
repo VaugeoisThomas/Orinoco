@@ -85,6 +85,11 @@ nav > .navbar-cart > .fa-shopping-cart {
 .cart-wrapper-name {
   text-align: center;
 }
+@media (max-width: 425px) {
+  .cart-wrapper {
+    width: 100%;
+  }
+}
 .cart-quantity {
   display: flex;
   flex-direction: row;

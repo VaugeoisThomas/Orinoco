@@ -24,15 +24,21 @@ class Cart{
      * @param {*} result 
      */
     createLocalStorage(result){
+        var name = document.querySelector('.card-name').textContent
+        var price = document.querySelector('.card-price').textContent
+        var description = document.querySelector('.card-text').textContent
+        var lenses = document.querySelector('.lenses-selected').selectedIndex
+        var lense = document.getElementsByTagName("option")[lenses].value
+
         let productSelected = {
-            name: result.name,
+            name: name,
             id: result._id,
             quantity: 1,
-            lense: result.lenses,
-            price: result.price / 100,
+            lense: lense,
+            price: parseInt(price),
             img: result.imageUrl,
-            description: result.description,
-            total: result.price / 100
+            description: description,
+            total: parseInt(price)
         }
         return productSelected
     }
@@ -46,9 +52,9 @@ class Cart{
             quantity = this.content.reduce(function(total, product){return total + product.quantity}, 0)
         }else{
         quantity = 0
+        }
+        document.getElementById('quantity').innerHTML = quantity
     }
-    document.getElementById('quantity').innerHTML = quantity
-}
     
     addProducts(result){
 
@@ -108,16 +114,13 @@ class Cart{
             if(product.quantity == 0){
                 let itemDeleted = this.content.indexOf(product); //Verifying if selected product belongs to array's product
                 this.content.splice(itemDeleted, 1) // Remove our line 
-                this.save()
-                this.totalCard() // Calculate again the total price of the cart
                 window.location.reload()
             }else{
                 quantityInCart.innerHTML = `Qty : ${product.quantity}`
                 totalItems.innerHTML = `<strong>${product.price * product.quantity}</strong> €`
-                this.save()
-                this.totalCard() // Calculate again the total price of the cart
             }
-
+            this.save()
+            this.totalCard() // Calculate again the total price of the cart
         })
     }
     
