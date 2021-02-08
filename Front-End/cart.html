@@ -38,36 +38,36 @@
                     <div class="cart-title">Fiche de contact</div>
                         <section class="contactInformations">
                             <div class="informationsClients">
-                                <form action="" name="informations" method="" id="isValid">
+                                <form action="" name="informations" method="" id="form">
                                     <div class="form-row">
                                         <div class="col-md-6 mb-3">
-                                            <label for="firstName">Nom</label>
-                                            <input type="text" id="firstName" class="form-control" placeholder="Nom" required pattern="[a-zA-Z\ - \s]*">
+                                            <label for="lastName">Nom</label>
+                                            <input type="text" id="firstName" class="form-control" placeholder="Nom" required pattern="[a-zA-ZéèêÉÈÊ\s\-]+">
                                         </div>
                                     
                                         <div class="col-md-6 mb-3">
-                                            <label for="lastName">Prénom</label>
-                                            <input type="text" id="lastName" class="form-control" placeholder="Prénom" required pattern="[a-zA-Z\ - \s]*">
+                                            <label for="firstName">Prénom</label>
+                                            <input type="text" id="lastName" class="form-control" placeholder="Prénom" required pattern="[a-zA-ZéèêÉÈÊ\s\-]+">
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6 mb-3">
                                             <label for="number">Numéro de rue</label>
-                                            <input type="number" class="form-control" id="number" placeholder="numéro de rue" required pattern="^\d{5}$">
+                                            <input type="number" class="form-control" id="number" placeholder="numéro de rue" required pattern="^\d{4}">
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="address">Nom de voie</label>
-                                            <input type="text" class="form-control" id="address" placeholder="adresse" required pattern="[a-zA-Z\ - \s]*">
+                                            <input type="text" class="form-control" id="address" placeholder="adresse" required pattern="[a-zA-ZéèêÉÈÊ\ \'\-\s]+">
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6 mb-3">
-                                            <label for="zipCode">Code Postal</label>
-                                            <input type="number" class="form-control" id="zipCode" placeholder="code postal" required pattern="^\d{5}$">
+                                            <label for="postalCode">Code Postal</label>
+                                            <input type="number" class="form-control" id="postalCode" placeholder="code postal" required pattern="^\d{5}">
                                         </div>
                                         <div class="col-md-6 mb-3">
-                                            <label for="state">Ville</label>
-                                            <input type="text" class="form-control" id="state" placeholder="ville" required pattern="[a-zA-Z\ - \s]*">
+                                            <label for="city">Ville</label>
+                                            <input type="text" class="form-control" id="city" placeholder="ville" required pattern="[a-zA-ZéèêÉÈÊ\ \'\-\s]+">
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -77,7 +77,7 @@
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">@</div>
                                                 </div>
-                                                <input type="text" class="form-control" id="email" placeholder="Email" required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
+                                                <input type="text" class="form-control" id="email" placeholder="Email" required pattern="[\w-\.]+@([\w-]+\.)+[\w-]{2,4}">
                                             </div>
                                         </div>
                                     </div>
@@ -85,7 +85,7 @@
                             </div>
                         </section>
                     </div>
-                    <button id="submit-button" class="btn btn-success" type="submit">Passer la commande</button>
+                    <button id="ordering-button" class="btn btn-success" type="submit">Passer la commande</button>
                 </div>
             </div>
         </div>

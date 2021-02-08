@@ -27,14 +27,15 @@ class Cart{
         var name = document.querySelector('.card-name').textContent
         var price = document.querySelector('.card-price').textContent
         var description = document.querySelector('.card-text').textContent
-        var lenses = document.querySelector('.lenses-selected').selectedIndex
-        var lense = document.getElementsByTagName("option")[lenses].value
+        var lenses = document.querySelector('.lenses-selected').value
+
+        console.log(lenses)
 
         let productSelected = {
             name: name,
             id: result._id,
             quantity: 1,
-            lense: lense,
+            lense: lenses,
             price: parseInt(price),
             img: result.imageUrl,
             description: description,
@@ -131,9 +132,5 @@ class Cart{
         if(this.content === null) { return }
         let totalWithoutTaxes = this.content.reduce(function(total, product){return total + product.total}, 0)
         document.getElementById("total").innerHTML = totalWithoutTaxes+' €'
-    }
-    
-    generaterOrder(min, max){
-        return Math.floor(Math.random() * (max - min + 1 )) + min
     }
 }
