@@ -19,6 +19,11 @@ class Cart{
         localStorage.setItem("item", JSON.stringify(this.content))
     }
 
+    remove(){
+        localStorage.removeItem('item')
+        this.quantityInCart = 0
+    }
+
     /**
      * Create an object for the LocalStorage
      * @param {*} result 
@@ -130,7 +135,12 @@ class Cart{
     totalCard(){
         if(this.content === null) { return }
         let totalWithoutTaxes = this.content.reduce(function(total, product){return total + product.total}, 0)
-        document.querySelector("#total").innerHTML = totalWithoutTaxes+' €'
+        let total = document.querySelector("#total")
+        if(!total){
+            return totalWithoutTaxes
+        }else{
+            total.innerHTML = totalWithoutTaxes+' €'
+        }
     }
 
     displayOrder() {
@@ -153,11 +163,13 @@ class Cart{
                 <div class="row">
                     <div class="col-md-12">
                         <p> Merci pour votre commande, Mr/Mme ${contact.lastName}</p>
-                        <p> Votre commande porte le numéro : ${contact.order}, pour un total de  €. </p>
+                        <p> Votre commande porte le numéro : ${contact.order}, pour un total de  ${this.totalCard()}€. </p>
                         <p> Elle vous sera livré dans 5 jours ouvrés</p>
                     </div>
                 </div>`
             orderBloc.insertAdjacentHTML("afterbegin", renderedUserInterface)
+            this.remove()
+
         })
     }
 }

@@ -25,7 +25,7 @@ function display(){
                 <div class="cart-quantity-total" id="${product.name}-total"><strong>${product.price * product.quantity}</strong> €</div>
                 <div class="cart-wrapper-remove" id='${product.name}-delete'>
             </div> `
-        document.getElementById('cart-title').insertAdjacentHTML("afterend", resume)
+        document.querySelector('#cart-title').insertAdjacentHTML("afterend", resume)
         cart.addQuantity(product)
         cart.removeQuantity(product)
         cart.totalCard()
@@ -34,7 +34,11 @@ function display(){
 display()
 
 if(!cart.content | cart.content == 0){
-    document.getElementById('cart').innerHTML = "Votre panier est vide"
+    document.querySelector('#cart').innerHTML = "Votre panier est vide"
+    let contact = document.querySelector("#resume-order")
+    let container = document.querySelector(".resume")
+    container.removeChild(contact)
+
 }
 
 cart.displayOrder()
