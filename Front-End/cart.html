@@ -42,32 +42,38 @@
                                     <div class="form-row">
                                         <div class="col-md-6 mb-3">
                                             <label for="lastName">Nom</label>
-                                            <input type="text" id="firstName" class="form-control" placeholder="Nom" required pattern="[a-zA-ZéèêÉÈÊ\s\-]+">
+                                            <input type="text" id="lastName" class="form-control" placeholder="Nom" required>
+                                            <span id="lastNameError"></span>
                                         </div>
                                     
                                         <div class="col-md-6 mb-3">
                                             <label for="firstName">Prénom</label>
-                                            <input type="text" id="lastName" class="form-control" placeholder="Prénom" required pattern="[a-zA-ZéèêÉÈÊ\s\-]+">
+                                            <input type="text" id="firstName" class="form-control" placeholder="Prénom" required>
+                                            <span id="firstNameError"></span>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6 mb-3">
                                             <label for="number">Numéro de rue</label>
-                                            <input type="number" class="form-control" id="number" placeholder="numéro de rue" required pattern="^\d{4}">
+                                            <input type="number" class="form-control" id="number" placeholder="numéro de rue" required>
+                                            <span id="streetNumberError"></span>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="address">Nom de voie</label>
-                                            <input type="text" class="form-control" id="address" placeholder="adresse" required pattern="[a-zA-ZéèêÉÈÊ\ \'\-\s]+">
+                                            <input type="text" class="form-control" id="address" placeholder="adresse" required>
+                                            <span id="streetNameError"></span>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6 mb-3">
                                             <label for="postalCode">Code Postal</label>
-                                            <input type="number" class="form-control" id="postalCode" placeholder="code postal" required pattern="^\d{5}">
+                                            <input type="number" class="form-control" id="postalCode" placeholder="code postal" required>
+                                            <span id="postalCodeError"></span>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="city">Ville</label>
-                                            <input type="text" class="form-control" id="city" placeholder="ville" required pattern="[a-zA-ZéèêÉÈÊ\ \'\-\s]+">
+                                            <input type="text" class="form-control" id="city" placeholder="ville" required>
+                                            <span id="cityNameError"></span>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -77,7 +83,8 @@
                                                 <div class="input-group-prepend">
                                                     <div class="input-group-text">@</div>
                                                 </div>
-                                                <input type="text" class="form-control" id="email" placeholder="Email" required pattern="[\w-\.]+@([\w-]+\.)+[\w-]{2,4}">
+                                                <input type="text" class="form-control" id="email" placeholder="Email" required pattern="[\w\-\.]+@[\w-]+\.+[\w-]{2,4}">
+                                                <span id="emailError"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -99,6 +106,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/c1a8b5239f.js" crossorigin="anonymous"></script>
+    <script defer src="public/javaScript/Contact.model.js"></script>
     <script defer src="public/javaScript/Cart.model.js"></script>
     <script defer src="public/javaScript/cart.js"></script>
 </body>

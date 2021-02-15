@@ -43,6 +43,7 @@ class Cart{
         }
         return productSelected
     }
+
     /**
     * Allow to update cart when we get one or more product in it
     */
@@ -132,5 +133,24 @@ class Cart{
         if(this.content === null) { return }
         let totalWithoutTaxes = this.content.reduce(function(total, product){return total + product.total}, 0)
         document.getElementById("total").innerHTML = totalWithoutTaxes+' €'
+    }
+
+    displayOrder() {
+
+        let btnOrdering = document.querySelector('#ordering-button')
+        btnOrdering.addEventListener('click', () => {
+
+            const contact = new Contact
+            
+            /** Registration of contact member */
+            contact.createMember()
+
+            /** Creation of a random order number  */
+            //this.createRandomOrderNumber()
+        
+            /** Displaying the order with gratefull */
+
+            // alert('Bravo')
+        })
     }
 }

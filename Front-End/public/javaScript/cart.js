@@ -36,3 +36,5 @@ display()
 if(!cart.content | cart.content == 0){
     document.getElementById('cart').innerHTML = "Votre panier est vide"
 }
+
+cart.displayOrder()
