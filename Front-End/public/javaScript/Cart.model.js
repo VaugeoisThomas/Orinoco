@@ -29,8 +29,6 @@ class Cart{
         var description = document.querySelector('.card-text').textContent
         var lenses = document.querySelector('.lenses-selected').value
 
-        console.log(lenses)
-
         let productSelected = {
             name: name,
             id: result._id,
@@ -96,8 +94,8 @@ class Cart{
             product.total = product.quantity * product.price
             quantityInCart.innerHTML = `Qty : ${product.quantity}`
             totalItems.innerHTML = `<strong>${product.price * product.quantity}</strong> €`
-            this.save()
             this.totalCard()
+            this.save()
         })
     }
     
@@ -132,7 +130,7 @@ class Cart{
     totalCard(){
         if(this.content === null) { return }
         let totalWithoutTaxes = this.content.reduce(function(total, product){return total + product.total}, 0)
-        document.getElementById("total").innerHTML = totalWithoutTaxes+' €'
+        document.querySelector("#total").innerHTML = totalWithoutTaxes+' €'
     }
 
     displayOrder() {
@@ -141,16 +139,25 @@ class Cart{
         btnOrdering.addEventListener('click', () => {
 
             const contact = new Contact
-            
+
             /** Registration of contact member */
             contact.createMember()
-
-            /** Creation of a random order number  */
-            //this.createRandomOrderNumber()
         
             /** Displaying the order with gratefull */
 
-            // alert('Bravo')
+            let resume = document.querySelector(".resume")
+            let orderBloc = document.querySelector("main")
+            orderBloc.removeChild(resume)
+
+            let renderedUserInterface = `
+                <div class="row">
+                    <div class="col-md-12">
+                        <p> Merci pour votre commande, Mr/Mme ${contact.lastName}</p>
+                        <p> Votre commande porte le numéro : ${contact.order}, pour un total de  €. </p>
+                        <p> Elle vous sera livré dans 5 jours ouvrés</p>
+                    </div>
+                </div>`
+            orderBloc.insertAdjacentHTML("afterbegin", renderedUserInterface)
         })
     }
 }
