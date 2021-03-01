@@ -5,6 +5,7 @@ var cart =  new Cart
  */
 function display(){
     if(cart.content === null) { return }
+
     for(let product of cart.content){
         let resume = `
             <div class="cart-wrapper">
@@ -38,7 +39,6 @@ if(!cart.content | cart.content == 0){
     let contact = document.querySelector("#resume-order")
     let container = document.querySelector(".resume")
     container.removeChild(contact)
-
 }
 
 cart.displayOrder()

@@ -52,7 +52,9 @@ class Products {
     displayOne(result){
         const productSelected = document.querySelector("section")
         productSelected.classList.add('products--selected')
+        let slct = document.createElement('select')       
         
+
         let renderedUserInterface = `
             <h1>Voici le descriptif du "<span class="card-name">${result.name}</span>"</h1>
             <div class="card card--selected">
@@ -61,7 +63,9 @@ class Products {
                     <i class="card-text">${result.description}</i>
                     <div id="product-selected">
                         <h4>Selectionnez vos lentilles</h4>
-                        <select name="lenses" class="lenses-selected"></select>
+                        <select name="lenses" class="lenses-selected">
+                        
+                        </select>
                     </div>
                     <h4 class="card-title"><span class="card-price">${result.price / 100}</span>€</h4>
                 </div>
@@ -72,10 +76,12 @@ class Products {
         productSelected.insertAdjacentHTML("beforeend", renderedUserInterface)
         
         for (let i = 0; i < result.lenses.length; i++){
-            let option = document.createElement("option")
-            option.value = result.lenses[i]
-            option.innerHTML = result.lenses[i]
-            document.querySelector('.lenses-selected').appendChild(option)
+
+            let options = document.createElement("option")
+            slct.appendChild(options)
+            options.setAttribute('value', result.lenses)
+            options.textContent = result.lenses
+            slct.insertAdjacentElement('beforeend', options)   
         }
     }
 }
