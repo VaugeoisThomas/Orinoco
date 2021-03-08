@@ -8,9 +8,9 @@ class Cart{
             method: 'POST',
             body: JSON.stringify({
                 contact: contact,
-                product: products
+                products: products
             }),
-            header: {
+            headers: {
                 'Content-Type': 'application/json'
             }
         }
@@ -18,8 +18,7 @@ class Cart{
             let resp = await fetch(url, options)
             let res = await resp.json()
             return res
-        }
-        catch(error){
+        }catch(error){
             console.log(error)
         }
     }
@@ -170,15 +169,25 @@ class Cart{
         let btnOrdering = document.querySelector('#ordering-button')
         btnOrdering.addEventListener('click', () => {
 
+            //Contact
+            let customer = new Contact() 
+            customer.createMember()
+            //Product
+            let products = []
+            for(let i = 0; i < this.content.length; i++){
+                products.push(this.content[i].id)
+            }
+            //URL
+            let urlOrder = "http://localhost:3000/api/cameras/order"
 
-            const contact = new Contact
-
-            /** Registration of contact member */
-            contact.createMember()
-            
-            /** Displaying the order with gratefull */
+            this.sendProducts(urlOrder, customer, products).then(result =>{
+                let order = JSON.parse(sessionStorage.getItem('orderId'))
+                order = []
+                order.push(result)
+                sessionStorage.setItem('order', JSON.stringify(order))
+                document.location.href='confirmation.html'
+            })
         })
-
 
     }
 }

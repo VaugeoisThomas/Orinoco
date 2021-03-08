@@ -1,13 +1,10 @@
 class Contact {
-    constructor(firstName, lastName, streetNumber, streetName, postalCode, city, email, order){
+    constructor(firstName, lastName,adress , city, email){
         this.firstName = firstName
         this.lastName = lastName
-        this.streetNumber = streetNumber
-        this.streetName = streetName
-        this.postalCode = postalCode
+        this.adress = adress
         this.city = city
         this.email = email
-        this.order = order
     }
 
     setFirstName(firstName){
@@ -18,16 +15,8 @@ class Contact {
         this.lastName = lastName
     }
 
-    setStreetNumber(streetNumber){
-        this.streetNumber = streetNumber
-    }
-    
-    setStreetName(streetName){
-        this.streetName = streetName
-    }
-
-    setPostalCode(postalCode){
-        this.postalCode = postalCode
+    setAddress(address){
+        this.address = address
     }
 
     setCity(city){
@@ -37,23 +26,17 @@ class Contact {
     setEmail(email){
         this.email = email
     }
-    
-    getOrder(){
-        return order
-    }
 
     setOrder(order){
         this.order = order
     }
 
-    verifyingForm(firstName, lastName, streetName, streetNumber, city, postalCode, email){
+    verifyingForm(firstName, lastName, adress, city, email){
 
         let checkFirstName = this.checkString(firstName)
         let checkLastName = this.checkString(lastName)
-        let checkStreetName = this.checkString(streetName)
+        let checkAddress = this.checkAddress(address)
         let checkCity = this.checkString(city)
-        let checkStreetNumber = this.checkNumber(streetNumber)
-        let checkPostalCode = this.checkNumber(postalCode)
         let checkEmail = this.checkEmail(email)
 
         let validation = false
@@ -78,11 +61,11 @@ class Contact {
         }
 
         //Checking streetName
-        if(checkStreetName[0] == true){
-            this.setStreetName(streetName)
+        if(checkAddress[0] == true){
+            this.setAddress(address)
             validation = true
         }else{
-            document.querySelector('#streetNameError').innerHTML = `${checkStreetName[1]}`
+            document.querySelector("#addressError").innerHTML = `${checkAddress[1]}`
             validation = false
         }
 
@@ -92,24 +75,6 @@ class Contact {
             validation = true
         }else{
             document.querySelector('#cityNameError').innerHTML = `${checkCity[1]}`
-            validation = false
-        }
-
-        //Checking streetNumber
-        if(checkStreetNumber[0] == true){
-            this.setStreetNumber(parseInt(streetNumber))
-            validation = true
-        }else{
-            document.querySelector('#streetNumberError').innerHTML = `${checkStreetNumber[1]}`
-            validation = false
-        }
-
-         //Checking postalCode
-         if(checkPostalCode[0] == true){
-            this.setPostalCode(parseInt(postalCode))
-            validation = true
-        }else{
-            document.querySelector('#postalCodeError').innerHTML = `${checkPostalCode[1]}`
             validation = false
         }
 
@@ -148,6 +113,32 @@ class Contact {
         }else if(!query.test(data)){
             errors++
             msg = "Votre saisie ne doit être composée que de lettres"
+        }
+        if(errors > 0){
+            result = false
+        }
+    
+        return arr = [result, msg]
+    }
+
+    checkAddress(data){
+            
+        let errors = 0
+        let msg = ""
+        let result = true
+        let arr = []
+
+        let query = new RegExp('[0-9a-zA-ZéèêÉÈÊ\s\-]+')
+
+        if(!data){
+            errors++
+            msg = "Vous devez saisir une valeur"
+        }else if(data.length < 3 || data.length >= 50){
+            errors++
+            msg = "Votre saisie doit être comprise entre 3 et 50 caractères"
+        }else if(!query.test(data)){
+            errors++
+            msg = "Votre saisie n'est pas correcte"
         }
         if(errors > 0){
             result = false
@@ -216,27 +207,26 @@ class Contact {
     }
 
     /**
-     * Create a member and send a new number of order
+     * Create a member
      */
     createMember(){
         
         var firstName = document.querySelector('#firstName').value
         var lastName = document.querySelector('#lastName').value
-        var streetNumber = document.querySelector('#number').value
-        var streetName = document.querySelector("#address").value
+        var address = document.querySelector('#address').value
         var city = document.querySelector('#city').value
-        var postalCode = document.querySelector('#postalCode').value
         var email = document.querySelector('#email').value
 
         /** Verifying form and create a member */
 
-        let validation = this.verifyingForm(firstName, lastName, streetName, streetNumber, city, postalCode, email)
-
-        if(validation == true){
-            this.setOrder(number)
-        }else{
-            return
-        }
+        let validation = this.verifyingForm(firstName, address, lastName, city, email)
         
+        if(validation == true){
+            this.setFirstName(firstName)
+            this.setlastName(lastName)
+            this.setAddress(address)
+            this.setCity(city)
+            this.setEmail(email)
+        }
     }
 }
