@@ -233,20 +233,10 @@ class Contact {
         let validation = this.verifyingForm(firstName, lastName, streetName, streetNumber, city, postalCode, email)
 
         if(validation == true){
-            let number = this.createRandomOrderNumber(0, 100000000)
             this.setOrder(number)
         }else{
             return
         }
         
     }
-    /**
-     * Generate a rambom number between min and max
-     * @param {*} min 
-     * @param {*} max 
-     */
-    createRandomOrderNumber(min, max){
-            return Math.floor(Math.random() * (max - min + 1 )) + min
-    }
-
 }

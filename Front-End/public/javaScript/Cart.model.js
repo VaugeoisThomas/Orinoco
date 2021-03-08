@@ -2,6 +2,27 @@ class Cart{
     constructor(){
         this.content = JSON.parse(localStorage.getItem('item'))
     }
+
+    async sendProducts(url, contact, products){
+        const options = {
+            method: 'POST',
+            body: JSON.stringify({
+                contact: contact,
+                product: products
+            }),
+            header: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try {
+            let resp = await fetch(url, options)
+            let res = await resp.json()
+            return res
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
     /**
      * Initialyze the cart
      */
@@ -29,16 +50,17 @@ class Cart{
      * @param {*} result 
      */
     createLocalStorage(result){
-        var name = document.querySelector('.card-name').textContent
-        var price = document.querySelector('.card-price').textContent
-        var description = document.querySelector('.card-text').textContent
-        var lenses = document.querySelector('.lenses-selected').value
+        let name = document.querySelector('.card-name').textContent
+        let price = document.querySelector('.card-price').textContent
+        let description = document.querySelector('.card-text').textContent
+        let lenseList = document.querySelector('.liste')
+        let lenseSelected = lenseList.options[lenseList.selectedIndex].text
 
         let productSelected = {
             name: name,
             id: result._id,
             quantity: 1,
-            lense: lenses,
+            lense: lenseSelected,
             price: parseInt(price),
             img: result.imageUrl,
             description: description,
@@ -56,19 +78,19 @@ class Cart{
         if(this.content !== null){
             quantity = this.content.reduce(function(total, product){return total + product.quantity}, 0)
         }else{
-        quantity = 0
+            quantity = 0
         }
-        document.getElementById('quantity').innerHTML = quantity
+        document.querySelector('#quantity').innerHTML = quantity
     }
     
     addProducts(result){
 
-        let ls = this.createLocalStorage(result)
         this.initialyzeCart()
-
+        
         let button = document.getElementById('add-button')
         button.addEventListener('click', () => {
-
+            
+            let ls = this.createLocalStorage(result)
             //Check if the product is in cart
             let isProductInCart = this.content.find(result => result.name == ls.name)
 
@@ -148,28 +170,15 @@ class Cart{
         let btnOrdering = document.querySelector('#ordering-button')
         btnOrdering.addEventListener('click', () => {
 
+
             const contact = new Contact
 
             /** Registration of contact member */
             contact.createMember()
-        
+            
             /** Displaying the order with gratefull */
-
-            let resume = document.querySelector(".resume")
-            let orderBloc = document.querySelector("main")
-            orderBloc.removeChild(resume)
-
-            let renderedUserInterface = `
-                <div class="row">
-                    <div class="col-md-12">
-                        <p> Merci pour votre commande, Mr/Mme ${contact.lastName}</p>
-                        <p> Votre commande porte le numéro : ${contact.order}, pour un total de  ${this.totalCard()}€. </p>
-                        <p> Elle vous sera livré dans 5 jours ouvrés</p>
-                    </div>
-                </div>`
-            orderBloc.insertAdjacentHTML("afterbegin", renderedUserInterface)
-            this.remove()
-
         })
+
+
     }
 }

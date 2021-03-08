@@ -51,10 +51,6 @@ class Products {
      */
     displayOne(result){
         const productSelected = document.querySelector("section")
-        productSelected.classList.add('products--selected')
- 
-          
-        
 
         let renderedUserInterface = `
             <h1>Voici le descriptif du "<span class="card-name">${result.name}</span>"</h1>
@@ -75,12 +71,13 @@ class Products {
 
 
         let divTag = document.querySelector('#product-selected')
-        let slct = document.createElement('select')
-        divTag.appendChild(slct)   
+        let lenseList = document.createElement('select')
+        lenseList.classList.add("liste")
+        divTag.appendChild(lenseList)
         
         result.lenses.forEach(lense => {
             let options = document.createElement("option")
-            slct.appendChild(options)
+            lenseList.appendChild(options)
             options.setAttribute('value', lense)
             options.classList.add('lenses-selected')
             options.textContent = lense 
