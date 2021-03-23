@@ -1,4 +1,5 @@
-var cart =  new Cart
+import {cart} from './main'
+
 let orderId = JSON.parse(sessionStorage.order)
 let firstName = orderId[0].contact.firstName
 let lastName = orderId[0].contact.lastName

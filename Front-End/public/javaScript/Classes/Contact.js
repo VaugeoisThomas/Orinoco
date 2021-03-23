@@ -31,181 +31,52 @@ class Contact {
         this.order = order
     }
 
-    verifyingForm(firstName, lastName, adress, city, email){
+    verifyingForm(firstName, lastName, address, city, email){
 
-        let checkFirstName = this.checkString(firstName)
-        let checkLastName = this.checkString(lastName)
-        let checkAddress = this.checkAddress(address)
-        let checkCity = this.checkString(city)
-        let checkEmail = this.checkEmail(email)
+        let checkFirstName = this.check(firstName, '[a-zA-ZéèêÉÈÊ\s\-]+')
+        let checkLastName = this.check(lastName, '[a-zA-ZéèêÉÈÊ\s\-]+')
+        let checkAddress = this.check(address, '[0-9a-zA-ZéèêÉÈÊ\s\-]+')
+        let checkCity = this.check(city, '[a-zA-ZéèêÉÈÊ\s\-]+')
+        let checkEmail = this.check(email, "[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)")
 
         let validation = false
 
         
         //Checking firstName
-        if(checkFirstName[0] == true){
-            this.setFirstName(firstName)
+        if(checkFirstName[0] == true &&  checkLastName[0] == true && checkAddress[0] == true && checkCity[0] == true && checkEmail[0] == true){
             validation = true
         }else{
-            document.querySelector('#firstNameError').innerHTML = `${checkFirstName[1]}`
-            validation = false
-        }
-
-        //Checking lastName
-        if(checkLastName[0] == true){
-            this.setlastName(lastName)
-            validation = true
-        }else{
-            document.querySelector('#lastNameError').innerHTML = `${checkLastName[1]}`
-            validation = false
-        }
-
-        //Checking streetName
-        if(checkAddress[0] == true){
-            this.setAddress(address)
-            validation = true
-        }else{
-            document.querySelector("#addressError").innerHTML = `${checkAddress[1]}`
-            validation = false
-        }
-
-        //Checking city
-        if(checkCity[0] == true){
-            this.setCity(city)
-            validation = true
-        }else{
-            document.querySelector('#cityNameError').innerHTML = `${checkCity[1]}`
-            validation = false
-        }
-
-        //Checking email
-        if(checkEmail[0] == true){
-            this.setEmail(email)
-            validation = true
-        }else{
-            document.querySelector('#emailError').innerHTML = `${checkEmail[1]}`
-            validation = false
+            document.querySelector('.form_error').innerHTML = `${checkFirstName[1]}`
         }
         return validation
     }
 
-    /**
-     * Do a checklist of a given string value and return an array
-     * 
-     * @param {string} data 
-     * @return Array [bool, string]
-     */
-    checkString(data){
-    
-        let errors = 0
-        let msg = ""
-        let result = true
-        let arr = []
 
-        let query = new RegExp('[a-zA-ZéèêÉÈÊ\s\-]+')
+    check(data, regex){
+        let errors = 0,
+            message = "",
+            result = true,
+            arr = [ result = true , message = ""],
+            query = new RegExp(regex);
 
         if(!data){
             errors++
-            msg = "Vous devez saisir une valeur"
+            message = "Vous devez saisir une valeur"
         }else if(data.length < 3 || data.length >= 50){
             errors++
-            msg = "Votre saisie doit être comprise entre 3 et 50 caractères"
+            message = "Votre saisie doit être comprise entre 3 et 50 caractères"
         }else if(!query.test(data)){
             errors++
-            msg = "Votre saisie ne doit être composée que de lettres"
+            message = "Votre saisie n'est pas valide"
         }
         if(errors > 0){
             result = false
         }
     
-        return arr = [result, msg]
+        return arr = [result, message]
+
     }
-
-    checkAddress(data){
-            
-        let errors = 0
-        let msg = ""
-        let result = true
-        let arr = []
-
-        let query = new RegExp('[0-9a-zA-ZéèêÉÈÊ\s\-]+')
-
-        if(!data){
-            errors++
-            msg = "Vous devez saisir une valeur"
-        }else if(data.length < 3 || data.length >= 50){
-            errors++
-            msg = "Votre saisie doit être comprise entre 3 et 50 caractères"
-        }else if(!query.test(data)){
-            errors++
-            msg = "Votre saisie n'est pas correcte"
-        }
-        if(errors > 0){
-            result = false
-        }
-    
-        return arr = [result, msg]
-    }
-    
-    /**
-     * Do a checklist of a given number value and return an array
-     * 
-     * @param {number} data 
-     * @return Array [bool, string]
-     */
-    checkNumber(data){
-        let query = new RegExp('[0-9]+')
-        let errors = 0
-        let msg = ""
-        let result = true
-        let arr = []
-
-        if(!data){
-            errors++
-            msg = "Vous devez saisir une valeur"
-        }else if(data.length < 1 || data.length > 6 ){
-            errors++
-            msg = "Votre saisie doit être comprise entre 3 et 5 chiffres"
-        }else if(!query.test(data)){
-            errors++
-            msg = "Votre saisie ne doit être composée que de chiffres"
-        }
-
-        if(errors > 0){
-            result = false
-        }
-
-        return arr = [result, msg]
-    }
-
-    /**
-     * Do a checklist of a given email value and return an array
-     * 
-     * @param {number} data 
-     * @return Array [bool, string]
-     */
-    checkEmail(data){
-        let query = new RegExp("[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)")
-        let errors = 0
-        let msg = ""
-        let result = true
-        let arr = []
-
-        if(!data){
-            errors++
-            msg = "Vous devez saisir une valeur"
-        }else if(!query.test(data)){
-            errors++
-            msg = "Votre email est invalide"
-        }
-
-        if(errors > 0){
-            result = false
-        }
-
-        return arr = [result, msg]
-    }
-
+   
     /**
      * Create a member
      */

@@ -1,4 +1,4 @@
-var cart =  new Cart
+import {cart} from './main'
 
 
 if(!cart.content || cart.content == 0){

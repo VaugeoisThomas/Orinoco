@@ -202,8 +202,6 @@ class Cart{
         let btnOrdering = document.querySelector('#ordering-button')
         btnOrdering.addEventListener('click', () => {
 
-            //Contact
-            let customer = new Contact() 
             customer.createMember()
             //Product
             let products = []

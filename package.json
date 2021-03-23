@@ -1,12 +1,21 @@
 {
   "name": "orinoco",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "This is the full stack project for Project number 5 of JWD ( Junior Web Developper)",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {}
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VaugeoisThomas/Orinoco.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/VaugeoisThomas/Orinoco/issues"
+  },
+  "homepage": "https://github.com/VaugeoisThomas/Orinoco#readme"
 }
